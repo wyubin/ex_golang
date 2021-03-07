@@ -1,29 +1,29 @@
 package main
 
 type iGun interface {
-    setName(name string)
-    setPower(power int)
-    getName() string
-    getPower() int
+	setName(name string)
+	setPower(power int)
+	getName() string
+	getPower() int
 }
 
 type gun struct {
-    name  string
-    power int
+	name  string
+	power int
 }
 
 func (g *gun) setName(name string) {
-    g.name = name
+	g.name = name
 }
 
 func (g *gun) getName() string {
-    return g.name
+	return g.name
 }
 
 func (g *gun) setPower(power int) {
-    g.power = power
+	g.power = power
 }
 
 func (g *gun) getPower() int {
-    return g.power
+	return g.power
 }

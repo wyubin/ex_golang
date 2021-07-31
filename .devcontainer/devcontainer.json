@@ -8,7 +8,10 @@
 	"mounts": [],
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash"
+		"terminal.integrated.shell.linux": "/bin/bash",
+		"gopls": {
+			"experimentalWorkspaceModule": true,
+		}
 	},
 	"extensions": [
 		"golang.go"

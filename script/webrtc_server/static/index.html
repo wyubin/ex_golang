@@ -1,0 +1,34 @@
+<html>
+<body>
+  <h1>Hello from a static page</h1>
+  <video autoplay></video>
+</body>
+<script>
+  const mediaStreamConstraints = {
+    audio: false,
+    video: true
+  };
+  
+  function handleMediaStreamError(error) {
+    console.log('navigator.getUserMedia error: ', error);
+  }
+  
+  function gotLocalMediaStream(stream) {
+    var videoTracks = stream.getVideoTracks();
+    console.log('Got stream with constraints:', constraints);
+    console.log('Using video device: ' + videoTracks[0].label);
+    stream.onremovetrack = function() {
+      console.log('Stream ended');
+    };
+    window.stream = stream; // make variable available to browser console
+    video.srcObject = stream;
+  }
+  
+navigator.mediaDevices
+  .getUserMedia(mediaStreamConstraints)
+  .then(gotLocalMediaStream)
+  .catch(handleMediaStreamError);
+</script>
+</html>
+
+

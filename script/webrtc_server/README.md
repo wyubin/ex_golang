@@ -35,3 +35,9 @@ openssl req -x509 -newkey rsa:4096 -sha256 -days 3650 -nodes \
   - 預設會 onCapture
   - stopMedia 會斷開 dom 跟 stream 的資源，但隨時可以接上，同時在 mac 上面也會把錄影燈關掉
 
+#### 截圖
+- 加上截圖功能 [link](https://ithelp.ithome.com.tw/articles/10241347)
+  - 截圖功能是直接把一個 frame 轉成 canvas 2d
+  - toDataURL 則是把照片資料轉成網址
+
+#### 做濾鏡

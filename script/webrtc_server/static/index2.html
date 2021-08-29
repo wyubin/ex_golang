@@ -1,0 +1,25 @@
+<html>
+<body>
+  <h1>搭配 Canvas 做視訊截圖功能</h1>
+  <video autoplay></video>
+  <!-- 取得media stream -->
+  <button onclick="onCapture()">Capture</button>
+  <!-- 停止media stream -->
+  <button onclick="stopMedia()">Stop</button>
+  <button id="screenshot-button">Screenshot Button</button>
+  <button id="to_img">轉照片</button>
+</br>
+  <div id="screenshot">
+    <h4>截圖</h4>
+    <canvas></canvas>
+    <h4>轉 img</h4>
+    <img src="">
+  </div>
+
+</body>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<!-- 主要程式 -->
+<script src="./js/main2.js"></script>
+</html>
+
+

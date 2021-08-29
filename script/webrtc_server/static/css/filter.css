@@ -1,0 +1,39 @@
+.none {
+  filter: none;
+}
+
+.blur {
+  filter: blur(3px);
+}
+
+.grayscale {
+  filter: grayscale(1);
+}
+
+.invert {
+  filter: invert(1);
+}
+
+.contrast {
+  filter: contrast(200%);
+}
+
+.sepia {
+  filter: sepia(1);
+}
+
+.opacity {
+  filter: opacity(50%);
+}
+
+.saturate {
+  filter: saturate(200%);
+}
+
+.hue-rotate {
+  filter: hue-rotate(180deg);
+}
+
+.drop-shadow {
+  filter: drop-shadow(16px 16px 10px black);
+}

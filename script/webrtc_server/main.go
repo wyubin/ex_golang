@@ -14,8 +14,8 @@ func main() {
 	http.Handle("/static/", http.StripPrefix("/static/", fs))
 
 	log.Println("Listening on :3000...")
-	err := http.ListenAndServe(":3000", nil)
-	//err := http.ListenAndServeTLS(":3000", "cert.pem", "key.pem", nil)
+	//err := http.ListenAndServe(":3000", nil)
+	err := http.ListenAndServeTLS(":3000", "cert.pem", "key.pem", nil)
 	if err != nil {
 		log.Fatal(err)
 	}

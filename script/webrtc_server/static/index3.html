@@ -1,0 +1,43 @@
+<html>
+  <head>
+    <link rel="stylesheet" href="./css/filter.css">
+  </head>
+<body>
+  <h1>濾鏡</h1>
+  <video autoplay></video>
+</br>擷取功能
+  <!-- 取得media stream -->
+  <button onclick="onCapture()">Capture</button>
+  <!-- 停止media stream -->
+  <button onclick="stopMedia()">Stop</button>
+  <button id="screenshot-button">Screenshot Button</button>
+  <button id="to_img">轉照片</button>
+</br>濾鏡功能
+<label for="filter">CSS Filter: </label>
+<select id="filter">
+  <option value="none">None</option>
+  <option value="blur">Blur</option>
+  <option value="grayscale">Grayscale</option>
+  <option value="invert">Invert</option>
+  <option value="contrast">Contrast</option>
+  <option value="sepia">Sepia</option>
+  <option value="opacity">Opacity 50%</option>
+  <option value="saturate">Saturate</option>
+  <option value="hue-rotate">Hue Rotate</option>
+  <option value="drop-shadow">Drop Shadow</option>
+</select>
+</br>
+  <div id="screenshot">
+    <h4>截圖</h4>
+    <canvas></canvas>
+    <h4>轉 img</h4>
+    <img src="">
+  </div>
+
+</body>
+<script src="https://webrtc.github.io/adapter/adapter-latest.js"></script>
+<!-- 主要程式 -->
+<script src="./js/main3.js"></script>
+</html>
+
+

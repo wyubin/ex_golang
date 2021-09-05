@@ -1,11 +1,9 @@
 package main
 
 import (
-	"fmt"
-
-	"example.com/ent_ex/configs"
+	"example.com/ent_ex/routes"
 )
 
 func main() {
-	fmt.Printf("config:%+v\n", configs.Cfg)
+	routes.Run()
 }

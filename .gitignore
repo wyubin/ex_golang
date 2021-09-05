@@ -2,3 +2,4 @@
 **/*.v[0-9]*
 ex_golang.wiki
 *.pem
+**/configs/config.*

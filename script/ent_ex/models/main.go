@@ -18,7 +18,7 @@ var (
 )
 
 func ConnectDB() *ent.Client {
-	db, err := sql.Open(configs.Cfg.DB.Type, configs.Cfg.DB.Type)
+	db, err := sql.Open(configs.Cfg.DB.Type, configs.Cfg.DB.DSN)
 	if err != nil {
 		log.Fatalf("failed opening connection to %s: %v", configs.Cfg.DB.Type, err)
 		return nil

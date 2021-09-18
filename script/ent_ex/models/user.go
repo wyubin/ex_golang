@@ -7,6 +7,7 @@ import (
 	"example.com/ent_ex/ent/user"
 )
 
+// QueryUsers: return user based name
 func QueryUser(ctx context.Context, name string) (*ent.User, error) {
 	return DB.User.
 		Query().
@@ -14,4 +15,12 @@ func QueryUser(ctx context.Context, name string) (*ent.User, error) {
 		// `Only` fails if no user found,
 		// or more than 1 user returned.
 		Only(ctx)
+}
+
+func CreateUser(ctx context.Context, name string, age *int) error {
+	sqlDB := DB.User.Create().SetName(name)
+	if age != nil {
+		sqlDB = sqlDB.SetAge(*age)
+	}
+	return sqlDB.OnConflict().UpdateNewValues().Exec(ctx)
 }

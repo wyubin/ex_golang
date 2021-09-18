@@ -3,6 +3,7 @@ package schema
 import (
 	"entgo.io/ent"
 	"entgo.io/ent/schema/field"
+	"entgo.io/ent/schema/index"
 )
 
 // User holds the schema definition for the User entity.
@@ -13,14 +14,19 @@ type User struct {
 // Fields of the User.
 func (User) Fields() []ent.Field {
 	return []ent.Field{
-		field.Int("age").
-			Positive(),
-		field.String("name").
-			Default("unknown"),
+		field.Int("age").Positive(),
+		field.String("name").Unique(),
 	}
 }
 
 // Edges of the User.
 func (User) Edges() []ent.Edge {
 	return nil
+}
+
+func (User) Index() []ent.Index {
+	return []ent.Index{
+		index.Fields("age", "name").
+			Unique(),
+	}
 }

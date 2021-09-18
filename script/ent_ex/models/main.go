@@ -25,7 +25,6 @@ func ConnectDB() *ent.Client {
 	}
 	drv := entsql.OpenDB(dialect.SQLite, db)
 	client := ent.NewClient(ent.Driver(drv))
-	defer client.Close()
 
 	// Run the auto migration tool.
 	if err := client.Schema.Create(context.Background()); err != nil {

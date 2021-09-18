@@ -35,5 +35,5 @@ func (User) Fields() []ent.Field {
 ```
 - 再產生相關的 orm script，就會產生除了 schema 以外的相關 structure script
 ```shell
-go generate ./ent
+go run entgo.io/ent/cmd/ent generate --feature sql/upsert ./ent/schema/
 ```

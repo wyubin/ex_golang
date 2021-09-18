@@ -1,2 +1,6 @@
 Gin:
   Port: 3000
+
+DB:
+  Type: sqlite3
+  DSN: '/workspaces/ex_golang/script/ent_ex/sqlite.db'

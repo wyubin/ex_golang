@@ -14,10 +14,16 @@ var (
 
 type config struct {
 	Gin commonCfg
+	DB  dbCfg
 }
 
 type commonCfg struct {
 	Port int
+}
+
+type dbCfg struct {
+	Type string
+	DSN  string
 }
 
 func GetConfig() *config {

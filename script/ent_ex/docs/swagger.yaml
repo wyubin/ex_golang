@@ -1,0 +1,64 @@
+definitions:
+  controllers.UserAddReq:
+    properties:
+      Age:
+        type: integer
+      Name:
+        type: string
+    required:
+    - Name
+    type: object
+  controllers.UserQueryReq:
+    properties:
+      Name:
+        type: string
+    required:
+    - Name
+    type: object
+info:
+  contact: {}
+paths:
+  /User:
+    get:
+      consumes:
+      - application/json
+      description: 提供 User 搜尋
+      parameters:
+      - description: request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UserQueryReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 提供 User 搜尋
+      tags:
+      - User
+    post:
+      consumes:
+      - application/json
+      description: 新增 User
+      parameters:
+      - description: request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UserAddReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: 新增 User
+      tags:
+      - User
+swagger: "2.0"

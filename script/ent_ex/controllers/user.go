@@ -13,7 +13,8 @@ import (
 // @Description 提供 User 搜尋
 // @Accept json
 // @Produce json
-// @Success 200 {object} ent.User
+// @Param request body UserQueryReq true "request"
+// @Success 200 {object} string
 // @Router /User [get]
 func UserQuery(c *gin.Context) {
 	param, _ := c.Get("param")
@@ -32,7 +33,8 @@ func UserQuery(c *gin.Context) {
 // @Description 新增 User
 // @Accept json
 // @Produce json
-// @Success 200 {object} ent.User
+// @Param request body UserAddReq true "request"
+// @Success 200 {object} string
 // @Router /User [post]
 func UserAdd(c *gin.Context) {
 	param, _ := c.Get("param")

@@ -9,6 +9,8 @@ import (
 
 	"example.com/ent_ex/configs"
 	"github.com/gin-gonic/gin"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
 )
 
 var (
@@ -18,6 +20,8 @@ var (
 func Run() {
 	rg := router.Group("/")
 	userRoutes(rg)
+
+	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	_ = router.Run(fmt.Sprintf(":%d", configs.Cfg.Gin.Port))
 }
 

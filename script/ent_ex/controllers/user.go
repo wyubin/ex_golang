@@ -33,14 +33,14 @@ func UserQuery(c *gin.Context) {
 // @Accept json
 // @Produce json
 // @Success 200 {object} ent.User
-// @Router /User [post]]
+// @Router /User [post]
 func UserAdd(c *gin.Context) {
 	param, _ := c.Get("param")
 	paramReq := param.(*UserAddReq)
-	err := models.CreateUser(c, paramReq.Name, paramReq.Age)
+	user, err := models.CreateUser(c, paramReq.Name, paramReq.Age)
 	if err != nil {
 		c.JSON(http.StatusInsufficientStorage, nil)
 		return
 	}
-	c.JSON(http.StatusOK, nil)
+	c.JSON(http.StatusOK, user)
 }

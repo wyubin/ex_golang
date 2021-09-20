@@ -20,6 +20,8 @@ go get entgo.io/ent/cmd/ent
 - 先 init 一個殼
 ```shell
 go run entgo.io/ent/cmd/ent init User
+## 可以同時 init 多個 models
+go run entgo.io/ent/cmd/ent init Car Group
 ```
 就會產生ent/schema/user.go 來進行 orm 的建構
 填入需要的欄位 

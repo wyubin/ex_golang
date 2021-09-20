@@ -17,10 +17,10 @@ func QueryUser(ctx context.Context, name string) (*ent.User, error) {
 		Only(ctx)
 }
 
-func CreateUser(ctx context.Context, name string, age *int) error {
+func CreateUser(ctx context.Context, name string, age *int) (*ent.User, error) {
 	sqlDB := DB.User.Create().SetName(name)
 	if age != nil {
 		sqlDB = sqlDB.SetAge(*age)
 	}
-	return sqlDB.OnConflict().UpdateNewValues().Exec(ctx)
+	return sqlDB.Save(ctx)
 }

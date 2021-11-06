@@ -15,6 +15,10 @@ go get entgo.io/ent/cmd/ent
 
 ```
 
+# db 設定
+## sqlite
+sqlite 在設定上面是直接在 DSN動手腳，可以參考 [git:go-sqlite3](https://github.com/mattn/go-sqlite3#connection-string)
+
 # 建立 orm 架構
 ## 基本架構
 - 先 init 一個殼

@@ -3,4 +3,4 @@ Gin:
 
 DB:
   Type: sqlite3
-  DSN: '/workspaces/ex_golang/script/ent_ex/sqlite.db'
+  DSN: '/workspaces/ex_golang/script/ent_ex/sqlite.db?_foreign_keys=on'

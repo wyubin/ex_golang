@@ -20,6 +20,7 @@ var (
 func Run() {
 	rg := router.Group("/")
 	userRoutes(rg)
+	carRoutes(rg)
 
 	router.GET("/swagger/*any", ginSwagger.WrapHandler(swaggerFiles.Handler))
 	_ = router.Run(fmt.Sprintf(":%d", configs.Cfg.Gin.Port))

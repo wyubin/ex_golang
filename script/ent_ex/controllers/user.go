@@ -7,10 +7,10 @@ import (
 	"github.com/gin-gonic/gin"
 )
 
-// UserQuery 提供 User 搜尋
+// UserQuery User search
 // @Tags User
-// @Summary 提供 User 搜尋
-// @Description 提供 User 搜尋
+// @Summary User search
+// @Description User search
 // @Accept json
 // @Produce json
 // @Param request body UserQueryReq true "request"
@@ -27,10 +27,10 @@ func UserQuery(c *gin.Context) {
 	c.JSON(http.StatusOK, user)
 }
 
-// UserAdd 新增 User
+// UserAdd add User
 // @Tags User
-// @Summary 新增 User
-// @Description 新增 User
+// @Summary add User
+// @Description add User
 // @Accept json
 // @Produce json
 // @Param request body UserAddReq true "request"

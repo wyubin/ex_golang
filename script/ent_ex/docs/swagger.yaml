@@ -22,7 +22,7 @@ paths:
     get:
       consumes:
       - application/json
-      description: 提供 User 搜尋
+      description: User search
       parameters:
       - description: request
         in: body
@@ -37,13 +37,13 @@ paths:
           description: OK
           schema:
             type: string
-      summary: 提供 User 搜尋
+      summary: User search
       tags:
       - User
     post:
       consumes:
       - application/json
-      description: 新增 User
+      description: add User
       parameters:
       - description: request
         in: body
@@ -58,7 +58,7 @@ paths:
           description: OK
           schema:
             type: string
-      summary: 新增 User
+      summary: add User
       tags:
       - User
 swagger: "2.0"

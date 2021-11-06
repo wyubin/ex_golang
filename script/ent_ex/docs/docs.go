@@ -25,7 +25,7 @@ var doc = `{
     "paths": {
         "/User": {
             "get": {
-                "description": "提供 User 搜尋",
+                "description": "User search",
                 "consumes": [
                     "application/json"
                 ],
@@ -35,7 +35,7 @@ var doc = `{
                 "tags": [
                     "User"
                 ],
-                "summary": "提供 User 搜尋",
+                "summary": "User search",
                 "parameters": [
                     {
                         "description": "request",
@@ -57,7 +57,7 @@ var doc = `{
                 }
             },
             "post": {
-                "description": "新增 User",
+                "description": "add User",
                 "consumes": [
                     "application/json"
                 ],
@@ -67,7 +67,7 @@ var doc = `{
                 "tags": [
                     "User"
                 ],
-                "summary": "新增 User",
+                "summary": "add User",
                 "parameters": [
                     {
                         "description": "request",
@@ -170,5 +170,5 @@ func (s *s) ReadDoc() string {
 }
 
 func init() {
-	swag.Register(swag.Name, &s{})
+	swag.Register("swagger", &s{})
 }

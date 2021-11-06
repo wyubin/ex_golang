@@ -6,7 +6,7 @@
     "paths": {
         "/User": {
             "get": {
-                "description": "提供 User 搜尋",
+                "description": "User search",
                 "consumes": [
                     "application/json"
                 ],
@@ -16,7 +16,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "提供 User 搜尋",
+                "summary": "User search",
                 "parameters": [
                     {
                         "description": "request",
@@ -38,7 +38,7 @@
                 }
             },
             "post": {
-                "description": "新增 User",
+                "description": "add User",
                 "consumes": [
                     "application/json"
                 ],
@@ -48,7 +48,7 @@
                 "tags": [
                     "User"
                 ],
-                "summary": "新增 User",
+                "summary": "add User",
                 "parameters": [
                     {
                         "description": "request",

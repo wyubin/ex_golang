@@ -43,3 +43,23 @@ func (User) Fields() []ent.Field {
 ```shell
 go run entgo.io/ent/cmd/ent generate --feature sql/upsert ./ent/schema/
 ```
+## relation
+https://entgo.io/docs/getting-started/#add-your-first-inverse-edge-backref
+需要分別在兩個 object 加上 Edges
+像是在 ent/schema/user.go 加上
+```golang
+func (User) Edges() []ent.Edge {
+	return []ent.Edge{
+		edge.To("cars", Car.Type),
+	}
+}
+```
+跟 ent/schema/car.go
+```golang
+func (Car) Edges() []ent.Edge {
+	return []ent.Edge{
+		edge.From("owner", User.Type).
+			Ref("cars").Unique(),
+	}
+}
+```

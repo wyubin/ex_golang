@@ -18,7 +18,7 @@ func init() {
 	carFields := schema.Car{}.Fields()
 	_ = carFields
 	// carDescRegisteredAt is the schema descriptor for registered_at field.
-	carDescRegisteredAt := carFields[1].Descriptor()
+	carDescRegisteredAt := carFields[2].Descriptor()
 	// car.DefaultRegisteredAt holds the default value on creation for the registered_at field.
 	car.DefaultRegisteredAt = carDescRegisteredAt.Default.(func() time.Time)
 	groupFields := schema.Group{}.Fields()

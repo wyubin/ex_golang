@@ -8,6 +8,7 @@ import (
 	"reflect"
 
 	"example.com/ent_ex/configs"
+	_ "example.com/ent_ex/docs"
 	"github.com/gin-gonic/gin"
 	swaggerFiles "github.com/swaggo/files"
 	ginSwagger "github.com/swaggo/gin-swagger"

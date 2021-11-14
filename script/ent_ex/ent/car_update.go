@@ -34,6 +34,12 @@ func (cu *CarUpdate) SetModel(s string) *CarUpdate {
 	return cu
 }
 
+// SetPlateNumber sets the "plate_number" field.
+func (cu *CarUpdate) SetPlateNumber(s string) *CarUpdate {
+	cu.mutation.SetPlateNumber(s)
+	return cu
+}
+
 // SetRegisteredAt sets the "registered_at" field.
 func (cu *CarUpdate) SetRegisteredAt(t time.Time) *CarUpdate {
 	cu.mutation.SetRegisteredAt(t)
@@ -157,6 +163,13 @@ func (cu *CarUpdate) sqlSave(ctx context.Context) (n int, err error) {
 			Column: car.FieldModel,
 		})
 	}
+	if value, ok := cu.mutation.PlateNumber(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: car.FieldPlateNumber,
+		})
+	}
 	if value, ok := cu.mutation.RegisteredAt(); ok {
 		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
 			Type:   field.TypeTime,
@@ -221,6 +234,12 @@ type CarUpdateOne struct {
 // SetModel sets the "model" field.
 func (cuo *CarUpdateOne) SetModel(s string) *CarUpdateOne {
 	cuo.mutation.SetModel(s)
+	return cuo
+}
+
+// SetPlateNumber sets the "plate_number" field.
+func (cuo *CarUpdateOne) SetPlateNumber(s string) *CarUpdateOne {
+	cuo.mutation.SetPlateNumber(s)
 	return cuo
 }
 
@@ -369,6 +388,13 @@ func (cuo *CarUpdateOne) sqlSave(ctx context.Context) (_node *Car, err error) {
 			Type:   field.TypeString,
 			Value:  value,
 			Column: car.FieldModel,
+		})
+	}
+	if value, ok := cuo.mutation.PlateNumber(); ok {
+		_spec.Fields.Set = append(_spec.Fields.Set, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: car.FieldPlateNumber,
 		})
 	}
 	if value, ok := cuo.mutation.RegisteredAt(); ok {

@@ -100,6 +100,13 @@ func Model(v string) predicate.Car {
 	})
 }
 
+// PlateNumber applies equality check predicate on the "plate_number" field. It's identical to PlateNumberEQ.
+func PlateNumber(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.EQ(s.C(FieldPlateNumber), v))
+	})
+}
+
 // RegisteredAt applies equality check predicate on the "registered_at" field. It's identical to RegisteredAtEQ.
 func RegisteredAt(v time.Time) predicate.Car {
 	return predicate.Car(func(s *sql.Selector) {
@@ -215,6 +222,117 @@ func ModelEqualFold(v string) predicate.Car {
 func ModelContainsFold(v string) predicate.Car {
 	return predicate.Car(func(s *sql.Selector) {
 		s.Where(sql.ContainsFold(s.C(FieldModel), v))
+	})
+}
+
+// PlateNumberEQ applies the EQ predicate on the "plate_number" field.
+func PlateNumberEQ(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.EQ(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberNEQ applies the NEQ predicate on the "plate_number" field.
+func PlateNumberNEQ(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.NEQ(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberIn applies the In predicate on the "plate_number" field.
+func PlateNumberIn(vs ...string) predicate.Car {
+	v := make([]interface{}, len(vs))
+	for i := range v {
+		v[i] = vs[i]
+	}
+	return predicate.Car(func(s *sql.Selector) {
+		// if not arguments were provided, append the FALSE constants,
+		// since we can't apply "IN ()". This will make this predicate falsy.
+		if len(v) == 0 {
+			s.Where(sql.False())
+			return
+		}
+		s.Where(sql.In(s.C(FieldPlateNumber), v...))
+	})
+}
+
+// PlateNumberNotIn applies the NotIn predicate on the "plate_number" field.
+func PlateNumberNotIn(vs ...string) predicate.Car {
+	v := make([]interface{}, len(vs))
+	for i := range v {
+		v[i] = vs[i]
+	}
+	return predicate.Car(func(s *sql.Selector) {
+		// if not arguments were provided, append the FALSE constants,
+		// since we can't apply "IN ()". This will make this predicate falsy.
+		if len(v) == 0 {
+			s.Where(sql.False())
+			return
+		}
+		s.Where(sql.NotIn(s.C(FieldPlateNumber), v...))
+	})
+}
+
+// PlateNumberGT applies the GT predicate on the "plate_number" field.
+func PlateNumberGT(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.GT(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberGTE applies the GTE predicate on the "plate_number" field.
+func PlateNumberGTE(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.GTE(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberLT applies the LT predicate on the "plate_number" field.
+func PlateNumberLT(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.LT(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberLTE applies the LTE predicate on the "plate_number" field.
+func PlateNumberLTE(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.LTE(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberContains applies the Contains predicate on the "plate_number" field.
+func PlateNumberContains(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.Contains(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberHasPrefix applies the HasPrefix predicate on the "plate_number" field.
+func PlateNumberHasPrefix(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.HasPrefix(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberHasSuffix applies the HasSuffix predicate on the "plate_number" field.
+func PlateNumberHasSuffix(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.HasSuffix(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberEqualFold applies the EqualFold predicate on the "plate_number" field.
+func PlateNumberEqualFold(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.EqualFold(s.C(FieldPlateNumber), v))
+	})
+}
+
+// PlateNumberContainsFold applies the ContainsFold predicate on the "plate_number" field.
+func PlateNumberContainsFold(v string) predicate.Car {
+	return predicate.Car(func(s *sql.Selector) {
+		s.Where(sql.ContainsFold(s.C(FieldPlateNumber), v))
 	})
 }
 

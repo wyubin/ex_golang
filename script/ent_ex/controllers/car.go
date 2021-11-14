@@ -15,11 +15,17 @@ import (
 // @Produce json
 // @Param request body UserQueryReq true "request"
 // @Success 200 {object} string
-// @Router /User [get]
+// @Router /Car [post]
 func CarAdd(c *gin.Context) {
 	param, _ := c.Get("param")
 	paramReq := param.(*CarAddReq)
-	car, err := models.CreateCar(c, paramReq.Model)
+	// check PlateNumber in db
+	_, err := models.QueryCar(c, paramReq.PlateNumber)
+	if err == nil {
+		c.JSON(http.StatusOK, DefaultResponse{Status: "Fail", Message: "車牌已註冊"})
+		return
+	}
+	car, err := models.CreateCar(c, paramReq.Model, paramReq.PlateNumber)
 	if err != nil {
 		c.JSON(http.StatusInsufficientStorage, nil)
 		return

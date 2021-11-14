@@ -37,6 +37,7 @@ type CarMutation struct {
 	typ           string
 	id            *int
 	model         *string
+	plate_number  *string
 	registered_at *time.Time
 	clearedFields map[string]struct{}
 	owner         *int
@@ -161,6 +162,42 @@ func (m *CarMutation) ResetModel() {
 	m.model = nil
 }
 
+// SetPlateNumber sets the "plate_number" field.
+func (m *CarMutation) SetPlateNumber(s string) {
+	m.plate_number = &s
+}
+
+// PlateNumber returns the value of the "plate_number" field in the mutation.
+func (m *CarMutation) PlateNumber() (r string, exists bool) {
+	v := m.plate_number
+	if v == nil {
+		return
+	}
+	return *v, true
+}
+
+// OldPlateNumber returns the old "plate_number" field's value of the Car entity.
+// If the Car object wasn't provided to the builder, the object is fetched from the database.
+// An error is returned if the mutation operation is not UpdateOne, or the database query fails.
+func (m *CarMutation) OldPlateNumber(ctx context.Context) (v string, err error) {
+	if !m.op.Is(OpUpdateOne) {
+		return v, fmt.Errorf("OldPlateNumber is only allowed on UpdateOne operations")
+	}
+	if m.id == nil || m.oldValue == nil {
+		return v, fmt.Errorf("OldPlateNumber requires an ID field in the mutation")
+	}
+	oldValue, err := m.oldValue(ctx)
+	if err != nil {
+		return v, fmt.Errorf("querying old value for OldPlateNumber: %w", err)
+	}
+	return oldValue.PlateNumber, nil
+}
+
+// ResetPlateNumber resets all changes to the "plate_number" field.
+func (m *CarMutation) ResetPlateNumber() {
+	m.plate_number = nil
+}
+
 // SetRegisteredAt sets the "registered_at" field.
 func (m *CarMutation) SetRegisteredAt(t time.Time) {
 	m.registered_at = &t
@@ -255,9 +292,12 @@ func (m *CarMutation) Type() string {
 // order to get all numeric fields that were incremented/decremented, call
 // AddedFields().
 func (m *CarMutation) Fields() []string {
-	fields := make([]string, 0, 2)
+	fields := make([]string, 0, 3)
 	if m.model != nil {
 		fields = append(fields, car.FieldModel)
+	}
+	if m.plate_number != nil {
+		fields = append(fields, car.FieldPlateNumber)
 	}
 	if m.registered_at != nil {
 		fields = append(fields, car.FieldRegisteredAt)
@@ -272,6 +312,8 @@ func (m *CarMutation) Field(name string) (ent.Value, bool) {
 	switch name {
 	case car.FieldModel:
 		return m.Model()
+	case car.FieldPlateNumber:
+		return m.PlateNumber()
 	case car.FieldRegisteredAt:
 		return m.RegisteredAt()
 	}
@@ -285,6 +327,8 @@ func (m *CarMutation) OldField(ctx context.Context, name string) (ent.Value, err
 	switch name {
 	case car.FieldModel:
 		return m.OldModel(ctx)
+	case car.FieldPlateNumber:
+		return m.OldPlateNumber(ctx)
 	case car.FieldRegisteredAt:
 		return m.OldRegisteredAt(ctx)
 	}
@@ -302,6 +346,13 @@ func (m *CarMutation) SetField(name string, value ent.Value) error {
 			return fmt.Errorf("unexpected type %T for field %s", value, name)
 		}
 		m.SetModel(v)
+		return nil
+	case car.FieldPlateNumber:
+		v, ok := value.(string)
+		if !ok {
+			return fmt.Errorf("unexpected type %T for field %s", value, name)
+		}
+		m.SetPlateNumber(v)
 		return nil
 	case car.FieldRegisteredAt:
 		v, ok := value.(time.Time)
@@ -361,6 +412,9 @@ func (m *CarMutation) ResetField(name string) error {
 	switch name {
 	case car.FieldModel:
 		m.ResetModel()
+		return nil
+	case car.FieldPlateNumber:
+		m.ResetPlateNumber()
 		return nil
 	case car.FieldRegisteredAt:
 		m.ResetRegisteredAt()

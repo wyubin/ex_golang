@@ -19,6 +19,16 @@ go get entgo.io/ent/cmd/ent
 ## sqlite
 sqlite 在設定上面是直接在 DSN動手腳，可以參考 [git:go-sqlite3](https://github.com/mattn/go-sqlite3#connection-string)
 
+# swaggo
+要記得 import 三個模組才能work
+```golang
+import (
+	_ "example.com/ent_ex/docs"
+	swaggerFiles "github.com/swaggo/files"
+	ginSwagger "github.com/swaggo/gin-swagger"
+)
+```
+
 # 建立 orm 架構
 ## 基本架構
 - 先 init 一個殼

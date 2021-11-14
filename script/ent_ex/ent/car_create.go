@@ -29,6 +29,12 @@ func (cc *CarCreate) SetModel(s string) *CarCreate {
 	return cc
 }
 
+// SetPlateNumber sets the "plate_number" field.
+func (cc *CarCreate) SetPlateNumber(s string) *CarCreate {
+	cc.mutation.SetPlateNumber(s)
+	return cc
+}
+
 // SetRegisteredAt sets the "registered_at" field.
 func (cc *CarCreate) SetRegisteredAt(t time.Time) *CarCreate {
 	cc.mutation.SetRegisteredAt(t)
@@ -144,6 +150,9 @@ func (cc *CarCreate) check() error {
 	if _, ok := cc.mutation.Model(); !ok {
 		return &ValidationError{Name: "model", err: errors.New(`ent: missing required field "model"`)}
 	}
+	if _, ok := cc.mutation.PlateNumber(); !ok {
+		return &ValidationError{Name: "plate_number", err: errors.New(`ent: missing required field "plate_number"`)}
+	}
 	if _, ok := cc.mutation.RegisteredAt(); !ok {
 		return &ValidationError{Name: "registered_at", err: errors.New(`ent: missing required field "registered_at"`)}
 	}
@@ -182,6 +191,14 @@ func (cc *CarCreate) createSpec() (*Car, *sqlgraph.CreateSpec) {
 			Column: car.FieldModel,
 		})
 		_node.Model = value
+	}
+	if value, ok := cc.mutation.PlateNumber(); ok {
+		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
+			Type:   field.TypeString,
+			Value:  value,
+			Column: car.FieldPlateNumber,
+		})
+		_node.PlateNumber = value
 	}
 	if value, ok := cc.mutation.RegisteredAt(); ok {
 		_spec.Fields = append(_spec.Fields, &sqlgraph.FieldSpec{
@@ -277,6 +294,18 @@ func (u *CarUpsert) UpdateModel() *CarUpsert {
 	return u
 }
 
+// SetPlateNumber sets the "plate_number" field.
+func (u *CarUpsert) SetPlateNumber(v string) *CarUpsert {
+	u.Set(car.FieldPlateNumber, v)
+	return u
+}
+
+// UpdatePlateNumber sets the "plate_number" field to the value that was provided on create.
+func (u *CarUpsert) UpdatePlateNumber() *CarUpsert {
+	u.SetExcluded(car.FieldPlateNumber)
+	return u
+}
+
 // SetRegisteredAt sets the "registered_at" field.
 func (u *CarUpsert) SetRegisteredAt(v time.Time) *CarUpsert {
 	u.Set(car.FieldRegisteredAt, v)
@@ -342,6 +371,20 @@ func (u *CarUpsertOne) SetModel(v string) *CarUpsertOne {
 func (u *CarUpsertOne) UpdateModel() *CarUpsertOne {
 	return u.Update(func(s *CarUpsert) {
 		s.UpdateModel()
+	})
+}
+
+// SetPlateNumber sets the "plate_number" field.
+func (u *CarUpsertOne) SetPlateNumber(v string) *CarUpsertOne {
+	return u.Update(func(s *CarUpsert) {
+		s.SetPlateNumber(v)
+	})
+}
+
+// UpdatePlateNumber sets the "plate_number" field to the value that was provided on create.
+func (u *CarUpsertOne) UpdatePlateNumber() *CarUpsertOne {
+	return u.Update(func(s *CarUpsert) {
+		s.UpdatePlateNumber()
 	})
 }
 
@@ -574,6 +617,20 @@ func (u *CarUpsertBulk) SetModel(v string) *CarUpsertBulk {
 func (u *CarUpsertBulk) UpdateModel() *CarUpsertBulk {
 	return u.Update(func(s *CarUpsert) {
 		s.UpdateModel()
+	})
+}
+
+// SetPlateNumber sets the "plate_number" field.
+func (u *CarUpsertBulk) SetPlateNumber(v string) *CarUpsertBulk {
+	return u.Update(func(s *CarUpsert) {
+		s.SetPlateNumber(v)
+	})
+}
+
+// UpdatePlateNumber sets the "plate_number" field to the value that was provided on create.
+func (u *CarUpsertBulk) UpdatePlateNumber() *CarUpsertBulk {
+	return u.Update(func(s *CarUpsert) {
+		s.UpdatePlateNumber()
 	})
 }
 

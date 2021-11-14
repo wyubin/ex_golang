@@ -17,6 +17,7 @@ type Car struct {
 func (Car) Fields() []ent.Field {
 	return []ent.Field{
 		field.String("model"),
+		field.String("plate_number").Unique(),
 		field.Time("registered_at").Default(time.Now),
 	}
 }

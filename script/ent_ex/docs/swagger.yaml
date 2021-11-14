@@ -18,6 +18,28 @@ definitions:
 info:
   contact: {}
 paths:
+  /Car:
+    post:
+      consumes:
+      - application/json
+      description: Add car with Model
+      parameters:
+      - description: request
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/controllers.UserQueryReq'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+      summary: Add car
+      tags:
+      - Car
   /User:
     get:
       consumes:

@@ -4,6 +4,40 @@
         "contact": {}
     },
     "paths": {
+        "/Car": {
+            "post": {
+                "description": "Add car with Model",
+                "consumes": [
+                    "application/json"
+                ],
+                "produces": [
+                    "application/json"
+                ],
+                "tags": [
+                    "Car"
+                ],
+                "summary": "Add car",
+                "parameters": [
+                    {
+                        "description": "request",
+                        "name": "request",
+                        "in": "body",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/controllers.UserQueryReq"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "OK",
+                        "schema": {
+                            "type": "string"
+                        }
+                    }
+                }
+            }
+        },
         "/User": {
             "get": {
                 "description": "User search",

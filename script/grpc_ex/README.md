@@ -35,6 +35,7 @@ protoc --go_out=plugins=grpc:. \
                --go_opt=paths=source_relative pkg/calculate/calculate.proto
 ```
 - 會產生一個 gopher.pb.go ，之後會導入 server.go
+- 如果是相關的 interface ，應該要放在同一個 proto [example](https://github.com/improbable-eng/grpc-web)
 
 ## server script
 - 需要讀入 pb，設定 server 繼承 UnimplementedGopherServer，並實做 GetGopher

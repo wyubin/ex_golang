@@ -13,6 +13,10 @@
 		"terminal.integrated.shell.linux": "/bin/bash",
 		"gopls": {
 			"experimentalWorkspaceModule": true,
+		},
+		"terminal.integrated.env.linux":{
+			"GOPROXY":"https://proxy.golang.org,direct",
+			"GONOPROXY": "none;"
 		}
 	},
 	"remoteUser": "yubin",

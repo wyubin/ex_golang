@@ -1,0 +1,20 @@
+syntax = "proto3";
+package gopher;
+
+option go_package = "example.com/grpc_ex";
+
+// The gopher service definition.
+service Gopher {
+  // 設定 GetGopher 作為一個界面，決定進出的架構
+  rpc GetGopher (GopherRequest) returns (GopherReply) {}
+}
+
+// Request 的第一個欄位是文字(Name)
+message GopherRequest {
+  string name = 1;
+}
+
+// Response 的第一個欄位是文字(Message)
+message GopherReply {
+  string message = 1;
+}

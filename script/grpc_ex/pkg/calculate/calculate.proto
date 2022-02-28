@@ -1,0 +1,20 @@
+syntax = "proto3";
+package calc;
+
+option go_package = "example.com/grpc_ex";
+
+// The Calc service definition.
+service Calc {
+  // 設定 GetCalc 作為一個界面，決定進出的架構
+  rpc GetCalc(CalcRequest) returns (CalcReply) {}
+}
+
+// Request 的第一個欄位是數字(Input)
+message CalcRequest {
+  int32 input = 1;
+}
+
+// Response 的第一個欄位是數字(Sum)
+message CalcReply {
+  int32 Sum = 1;
+}

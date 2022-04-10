@@ -4,6 +4,8 @@
 
 [Standard Package Layout](https://medium.com/@benbjohnson/standard-package-layout-7cdbc8391fc1)
 
+[How To Structure Your Go App](https://www.youtube.com/watch?v=MpFog2kZsHk)
+
 ### project structure
 
 ```mermaid

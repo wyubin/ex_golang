@@ -13,8 +13,8 @@ import (
 	"github.com/spf13/cobra"
 	"google.golang.org/grpc"
 
-	pbCalc "example.com/grpc_ex/pkg/calculate"
-	pbGopher "example.com/grpc_ex/pkg/gopher"
+	pbCalc "ex_golang/script/grpc_ex/pkg/calculate"
+	pbGopher "ex_golang/script/grpc_ex/pkg/gopher"
 )
 
 const (

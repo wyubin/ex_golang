@@ -4,3 +4,6 @@ ex_golang.wiki
 *.pem
 **/configs/config.*
 *.db
+
+# Go workspace file
+go.work

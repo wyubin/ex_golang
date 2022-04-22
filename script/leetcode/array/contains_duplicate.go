@@ -15,7 +15,7 @@ func containsDuplicate(nums []int) bool {
 }
 
 func main() {
-	nums := []int{1, 2, 3, 4, 5, 6, 7}
+	nums := []int{1, 2, 3, 4, 5, 2, 7}
 	resBool := containsDuplicate(nums)
 	fmt.Printf("resBool:%+v\n", resBool)
 }

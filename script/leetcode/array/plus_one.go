@@ -21,7 +21,7 @@ func plusOne(digits []int) []int {
 }
 
 func main() {
-	nums := []int{9, 9}
+	nums := []int{9, 9, 9}
 	k := plusOne(nums)
 	fmt.Printf("k:%+v\n", k)
 }

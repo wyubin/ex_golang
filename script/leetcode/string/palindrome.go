@@ -11,9 +11,11 @@ func isPalindrome(s string) bool {
 	for indHead < indTail {
 		for !validByte(s[indHead]) && indHead < indTail {
 			indHead++
+			fmt.Printf("skip to head index:%+v\n", indHead)
 		}
 		for !validByte(s[indTail]) && indHead < indTail {
 			indTail--
+			fmt.Printf("skip to tail index:%+v\n", indTail)
 		}
 		if indHead >= indTail {
 			break
@@ -37,7 +39,7 @@ func validByte(b byte) bool {
 }
 
 func main() {
-	nums := ".,"
+	nums := ",mnnm...."
 	k := isPalindrome(nums)
 	fmt.Printf("k:%+v\n", k)
 }

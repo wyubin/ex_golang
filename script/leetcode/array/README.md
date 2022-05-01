@@ -32,3 +32,34 @@ intersect(nums1 []int, nums2 []int) []int
   - while val1 不大於 val2，就iter ind2 去看有沒有 val1==val2 然後 append 並 break 
     - 當 num2 到最後了也要 break
 
+# move_zeros
+- 將一個整數 array 中的0移到後面，不使用 pop 跟 append 的話，只用array本身來做位置的移動
+```golang
+func moveZeroes(nums []int)
+```
+- 主要就是看到 0 就指定其後的index往前，再移動0到最後
+
+# plus_one
+- 數字的不同位數組成一個 int array，模擬+1 後的進位狀況
+```golang
+func plusOne(digits []int) []int
+```
+- 從最後的index(最小位數處理)，getTen 為前一個位數有進位造成目前位數要+1
+- 跑完最大位數後如果還是 getTen 就要多 append 一位數
+
+# rotate_array
+- 一個 int array 把最後數字塞到最前面作為 rotate 一次，計算rotate k 次以後的 array
+```golang
+func rotate(nums []int, k int) 
+```
+- 先將k算出 len_nums 的餘數，len_nums減掉此餘數就是這個 index 要往前搬的最初index
+```golang
+numsTmp := append(nums[indLast:], nums[:indLast]...)
+```
+
+# single_number copy
+- 在 int array 找出沒有重複的數字
+```golang
+func singleNumber(nums []int) int
+```
+- 一樣用 hash 輔助，如果第二次看到就從hash 刪掉，最後剩下的map 就是single

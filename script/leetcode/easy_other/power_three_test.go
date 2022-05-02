@@ -6,7 +6,7 @@ import (
 	"github.com/stretchr/testify/assert"
 )
 
-func TestIsValid(t *testing.T) {
-	res := isValid("{}[]")
+func TestIsPowerOfThree(t *testing.T) {
+	res := isPowerOfThree(27)
 	assert.Equal(t, true, res)
 }

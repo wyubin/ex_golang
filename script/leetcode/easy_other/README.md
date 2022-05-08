@@ -104,4 +104,19 @@
 - 只有兩個數字，其中一個會比較多
 - 可以用一個 counter ，指定第一個為 major，當遇到一次就 +1，如果遇到不同的就 -1
 
+# Reverse Linked List
+- [leetcode link](https://leetcode.com/problems/reverse-linked-list/)
+- 感覺是丟進去 stack 再拿出來把 next 接起來
+- 實做方式是用 swap 的方法，就像是箭頭對換
+```golang
+head, head.Next, p = head.Next, p, head
+```
 
+# Palindrome Linked List
+- [leetcode link](https://leetcode.com/problems/palindrome-linked-list/)
+- 用 fast 跟 slow 來定位 中間 node
+- 從 slow 做 reverse
+- 再跟從 head 的 val 比較就可以確認
+
+# Delete Node in a Linked List
+- [leetcode link](https://leetcode.com/problems/delete-node-in-a-linked-list/)

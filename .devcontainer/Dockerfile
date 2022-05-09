@@ -2,7 +2,7 @@ FROM golang:1.18.0-alpine
 RUN apk --no-cache add make gcc musl-dev git bash openssh sudo
 
 # add local user
-ARG USERNAME=yubin
+ARG USERNAME=wyubin
 ARG USER_UID=1000
 ARG USER_GID=$USER_UID
 

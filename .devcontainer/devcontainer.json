@@ -6,7 +6,7 @@
 	// Default path to open when attaching to a new container.
 	//"workspaceFolder": "/home/yubin/builds/mygit/ex_ruby",
 	"mounts": [
-		"source=/home/yubin/.ssh,target=/home/yubin/.ssh,type=bind,consistency=cached"
+		"source=/home/wyubin/.ssh,target=/home/wyubin/.ssh,type=bind,consistency=cached"
 	],
 	// Set *default* container specific settings.json values on container create.
 	"settings": { 
@@ -19,7 +19,7 @@
 			"GONOPROXY": "none;"
 		}
 	},
-	"remoteUser": "yubin",
+	"remoteUser": "wyubin",
 	"extensions": [
 		"golang.go",
 		"rangav.vscode-thunder-client"

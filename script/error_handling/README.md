@@ -8,6 +8,8 @@
 
 [汎型寫法可以參考一下](https://go.dev/doc/tutorial/generics)
 
+[Building APIs with Go — Part 3 Instrumentation and Error Handling](https://fernando-bandeira.medium.com/building-apis-with-go-part-3-instrumentation-and-error-handling-daba9385e3ec) - 可以參考一下裡面包error 的方式，還蠻符合一般使用的
+
 
 ## 心得
 - 主要學到 error 的封裝方式

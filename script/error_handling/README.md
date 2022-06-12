@@ -15,3 +15,8 @@
 - 主要學到 error 的封裝方式
 - msg 不同時，也就當作不同 error object
 - 可以用 panic 去啟動 error，也可以用 recover 去將得到的 error 去處理？(應該要用 transaction或是 db commit 去做？)
+
+## consider 20220612
+- 以error 可用在哪裡的角度來輸出 type error
+  - 像是可用在 http 等輸出的 error 就是 StatusError
+- new error 可以輸入一個 error 及 code(http code)來輸出一個具有 code 跟 caller 的 StatusError 封裝

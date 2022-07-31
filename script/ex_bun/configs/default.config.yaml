@@ -1,0 +1,2 @@
+database:
+  dsn: '/workspaces/ex_golang/script/ex_bun/tmp/sqlite.db?_foreign_keys=on'

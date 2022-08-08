@@ -22,7 +22,6 @@ require (
 	github.com/spf13/cast v1.5.0 // indirect
 	github.com/spf13/jwalterweatherman v1.1.0 // indirect
 	github.com/spf13/pflag v1.0.5 // indirect
-	github.com/spf13/viper v1.12.0 // indirect
 	github.com/subosito/gotenv v1.3.0 // indirect
 	golang.org/x/mod v0.6.0-dev.0.20220419223038-86c51ed26bb4 // indirect
 	golang.org/x/text v0.3.7 // indirect
@@ -44,6 +43,7 @@ require (
 
 require (
 	github.com/jinzhu/inflection v1.0.0 // indirect
+	github.com/spf13/viper v1.12.0
 	github.com/tmthrgd/go-hex v0.0.0-20190904060850-447a3041c3bc // indirect
 	github.com/uptrace/bun/dialect/sqlitedialect v1.1.7
 	github.com/uptrace/bun/driver/sqliteshim v1.1.7

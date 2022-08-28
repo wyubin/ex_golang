@@ -5,6 +5,7 @@ import (
 	"log"
 	"path/filepath"
 	"runtime"
+	"strings"
 
 	"github.com/spf13/viper"
 )
@@ -14,22 +15,25 @@ var (
 )
 
 type config struct {
-	DB struct {
-		DSN string `mapstructure:"DB_DSN"`
-	}
-	ARGS_INT int    `mapstructure:"ARGS_INT"`
-	ARGS     string `mapstructure:"TEST_ARGS"`
+	DSN   string `mapstructure:"db_dsn"`
+	Debug bool   `mapstructure:"db_debug"`
+}
+
+type exCfg struct {
+	ARGS_INT int `mapstructure:"ARGS_INT"`
 }
 
 func GetConfig() *config {
 	_, currentFilePath, _, _ := runtime.Caller(0)
 	wd, _ := filepath.Abs(filepath.Dir(currentFilePath))
 	// search cfg
-	viper.SetConfigType("env")
+	//viper.SetConfigType("yaml")
 	viper.AddConfigPath(wd)
-	viper.SetConfigName("config")
+	viper.SetConfigName("default_config")
 
 	viper.AutomaticEnv()
+	viper.SetEnvKeyReplacer(strings.NewReplacer("DB_", "SQLITE_"))
+	// viper.SetEnvPrefix("sqlite")
 	fmt.Printf("Set AutomaticEnv\n")
 	fmt.Printf("TEST_ARGS(env):%+v\n", viper.GetString("TEST_ARGS"))
 	fmt.Printf("DB_DSN(env):%+v\n", viper.GetString("DB_DSN"))
@@ -48,12 +52,14 @@ func GetConfig() *config {
 	fmt.Printf("DB_DSN(final):%+v\n", viper.GetString("DB_DSN"))
 
 	var cfg config
-	err = viper.Unmarshal(&cfg.DB)
-	viper.Unmarshal(&cfg)
-	if err != nil {
-		log.Fatalf("unable load config into struct, %v", err)
+	var cfg1 exCfg
+	for _, cfgTmp := range []interface{}{&cfg, &cfg1} {
+		err = viper.Unmarshal(cfgTmp)
+		if err != nil {
+			log.Fatalf("unable load config into struct, %v", err)
+		}
+		fmt.Printf("Config:%+v\n", cfgTmp)
 	}
-	fmt.Printf("Config:%+v\n", cfg)
 
 	return &cfg
 }

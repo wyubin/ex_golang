@@ -15,7 +15,7 @@ import (
 
 func main() {
 	ctx := context.Background()
-	sqldb, err := sql.Open(sqliteshim.ShimName, configs.Cfg.DB.DSN)
+	sqldb, err := sql.Open(sqliteshim.ShimName, configs.Cfg.DSN)
 	if err != nil {
 		panic(err)
 	}

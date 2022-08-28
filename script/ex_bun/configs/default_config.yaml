@@ -1,0 +1,3 @@
+db_dsn: /workspaces/ex_golang/script/ex_bun/tmp/sqlite.db?_foreign_keys=on
+db_debug: true
+db_poolsize: 5

@@ -17,8 +17,8 @@ type config struct {
 	DB struct {
 		DSN string `mapstructure:"DB_DSN"`
 	}
-
-	ARGS string `mapstructure:"TEST_ARGS"`
+	ARGS_INT int    `mapstructure:"ARGS_INT"`
+	ARGS     string `mapstructure:"TEST_ARGS"`
 }
 
 func GetConfig() *config {
@@ -30,6 +30,7 @@ func GetConfig() *config {
 	viper.SetConfigName("config")
 
 	viper.AutomaticEnv()
+	fmt.Printf("Set AutomaticEnv\n")
 	fmt.Printf("TEST_ARGS(env):%+v\n", viper.GetString("TEST_ARGS"))
 	fmt.Printf("DB_DSN(env):%+v\n", viper.GetString("DB_DSN"))
 
@@ -42,6 +43,10 @@ func GetConfig() *config {
 			log.Println("Can't load example.config.yaml")
 		}
 	}
+	fmt.Printf("viper ReadInConfig\n")
+	fmt.Printf("TEST_ARGS(final):%+v\n", viper.GetString("TEST_ARGS"))
+	fmt.Printf("DB_DSN(final):%+v\n", viper.GetString("DB_DSN"))
+
 	var cfg config
 	err = viper.Unmarshal(&cfg.DB)
 	viper.Unmarshal(&cfg)
@@ -49,7 +54,6 @@ func GetConfig() *config {
 		log.Fatalf("unable load config into struct, %v", err)
 	}
 	fmt.Printf("Config:%+v\n", cfg)
-	fmt.Printf("TEST_ARGS(final):%+v\n", viper.GetString("TEST_ARGS"))
-	fmt.Printf("DB_DSN(final):%+v\n", viper.GetString("DB_DSN"))
+
 	return &cfg
 }

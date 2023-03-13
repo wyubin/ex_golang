@@ -11,3 +11,5 @@
 [GoLang APIs: A skeleton for your future projects](https://blog.devgenius.io/golang-apis-a-skeleton-for-your-future-projects-a082dc4d6818)
 
 [chatbotgang/go-clean-arch](https://github.com/chatbotgang/go-clean-arch?fbclid=IwAR2jIdhoKBy9ZMBYceaSft2mb0so-s6IfbDUAwuTBXQGMhMnX7Pwl6q-bz8)
+
+[Best-Way-To-Structuring-Golang-Code](https://github.com/Aris-haryanto/Best-Way-To-Structuring-Golang-Code)

@@ -4,6 +4,8 @@
 [Hexagonal Architecture in Go](https://medium.com/@matiasvarela/hexagonal-architecture-in-go-cfd4e436faa3)
 
 [Wild Workouts](https://github.com/ThreeDotsLabs/wild-workouts-go-ddd-example)
+
+[DDD, Hexagonal, Onion, Clean, CQRS, … How I put it all together](https://herbertograca.com/2017/11/16/explicit-architecture-01-ddd-hexagonal-onion-clean-cqrs-how-i-put-it-all-together/)
 # flow
 ## open project
 - 先建立專案相關 dir

@@ -5,24 +5,23 @@
 	},
 	// Default path to open when attaching to a new container.
 	//"workspaceFolder": "/home/yubin/builds/mygit/ex_ruby",
-	"mounts": [
-		"source=/home/wyubin/.ssh,target=/home/wyubin/.ssh,type=bind,consistency=cached"
-	],
+	"mounts": [],
 	// Set *default* container specific settings.json values on container create.
-	"settings": { 
-		"terminal.integrated.shell.linux": "/bin/bash",
-		"gopls": {
-			"experimentalWorkspaceModule": true,
-		},
-		"terminal.integrated.env.linux":{
-			"GOPROXY":"https://proxy.golang.org,direct",
-			"GONOPROXY": "none;"
+	"customizations":{
+		"vscode": {
+			"settings": { 
+				"gopls": {
+					"experimentalWorkspaceModule": true
+				},
+				"terminal.integrated.env.linux":{
+					"GOPROXY":"https://proxy.golang.org,direct",
+					"GONOPROXY": "none;"
+				}
+			},
+			"extensions": [
+				"golang.go"
+			]
 		}
 	},
-	"remoteUser": "wyubin",
-	"extensions": [
-		"golang.go",
-		"rangav.vscode-thunder-client"
-	],
 	"forwardPorts": []
 }

@@ -5,6 +5,8 @@ ex_golang.wiki
 **/configs/config.*
 *.db
 tmp
+*.env
+bin
 
 # Go workspace file
 go.work

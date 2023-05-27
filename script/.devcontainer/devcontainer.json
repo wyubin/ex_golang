@@ -1,0 +1,27 @@
+{
+	"name": "ex_golang_script",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	// Default path to open when attaching to a new container.
+	//"workspaceFolder": "/home/yubin/builds/mygit/ex_ruby",
+	"mounts": [],
+	// Set *default* container specific settings.json values on container create.
+	"customizations":{
+		"vscode": {
+			"settings": { 
+				"gopls": {
+					"experimentalWorkspaceModule": true
+				},
+				"terminal.integrated.env.linux":{
+					"GOPROXY":"https://proxy.golang.org,direct",
+					"GONOPROXY": "none;"
+				}
+			},
+			"extensions": [
+				"golang.go"
+			]
+		}
+	},
+	"forwardPorts": []
+}

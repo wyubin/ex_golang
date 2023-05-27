@@ -10,9 +10,7 @@
 	"customizations":{
 		"vscode": {
 			"settings": { 
-				"gopls": {
-					"experimentalWorkspaceModule": true
-				},
+				"gopls": {},
 				"terminal.integrated.env.linux":{
 					"GOPROXY":"https://proxy.golang.org,direct",
 					"GONOPROXY": "none;"

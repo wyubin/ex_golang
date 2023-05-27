@@ -14,10 +14,10 @@ func div(count int) (int, error) {
 }
 
 func main() {
-	wp := workerpool.NewWorkerPool[int](5)
+	wp := workerpool.NewWorkerPool[int](3)
 	// prepare task
-	resAll := make([]int, 10)
-	var task workerpool.Task[int] = func(ct int) error {
+	res1 := make([]int, 10)
+	var task1 workerpool.Task[int] = func(ct int) error {
 		_res, err := div(ct)
 		if ct > 5 {
 			return fmt.Errorf("result[%d]: bigger than 5", ct)
@@ -26,13 +26,15 @@ func main() {
 			return err
 		}
 		fmt.Printf("rawResult[%d]:%d\n", ct, _res)
-		resAll[ct] = _res
+		res1[ct] = _res
 		return nil
 	}
 
-	wp.Run(task, []int{0, 1, 2, 3, 4, 5, 7}...)
+	wp.Run(task1, []int{0, 1, 2, 3, 4, 5, 7}...)
 	wp.Wait()
-	fmt.Printf("Result:%+v\n", resAll)
+	// wp.Run(task, []int{0, 1, 2, 3, 4, 5, 7}...)
+	// wp.Wait()
+	fmt.Printf("Result:%+v\n", res1)
 	errs := wp.Check()
 	fmt.Printf("allError[%d]:%s\n", len(strings.Split(errs.Error(), "\n")), errs)
 

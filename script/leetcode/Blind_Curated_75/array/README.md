@@ -38,3 +38,17 @@ twoSum(nums []int, target int) []int
 - 因為複雜度比2sum 高很多，基本上只能兩個 loop
 - 可以先將 []int 排序，用 i 做第一個int 的 idx, j/k 分別是第二個/第三個int 的 idx
 - i 不動，j 從 i+1 開始，k 從最後一個數開始, 如果 sun > 0，代表要減少，k-- else j++, 同時 j < k
+
+# Search in Rotated Sorted Array
+[link](https://leetcode.com/problems/search-in-rotated-sorted-array/)
+
+## intro
+輸入由一個從小到大排序的 array with possibly rotated at an unknown pivot index(ex [4,5,6,7,0,1,2])，輸入 target，輸出 target 在 array 中的 index，沒有則輸出 -1
+
+## plan
+- 以 low, high 兩個 idx 去做 binary search(不斷用 mid 去確認是不是 target)
+- 此數列的型態會至少有一邊是遞增的，特性是 left <= right
+    - 如果 low 半邊是遞增的
+        - 確認 target 在 low 跟 mid 之間的話 -> high = mid -1 else low = mid + 1
+    - 不然 high 半邊一定是遞增的
+        - 確認 target 在 mid 跟 high 之間的話 -> low = mid + 1 else high = mid -1 

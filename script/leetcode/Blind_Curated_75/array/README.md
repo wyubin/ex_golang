@@ -52,3 +52,20 @@ twoSum(nums []int, target int) []int
         - 確認 target 在 low 跟 mid 之間的話 -> high = mid -1 else low = mid + 1
     - 不然 high 半邊一定是遞增的
         - 確認 target 在 mid 跟 high 之間的話 -> low = mid + 1 else high = mid -1 
+
+# Combination Sum
+[link](https://leetcode.com/problems/combination-sum/)
+
+## intro
+會給一個 cadidates []int, 設定一個target int, 找出可能的組合其和為 target，返回所有可能的組合
+
+## plan
+看很多解法都使用 recursive，需要用 sub-problem 的想法去思考
+主要是因為這算是多重組合，而且是可重複的組合，因此 recursive 可以有效把時間複雜度減低
+
+### solution
+- 主程式 checkCombination(arrCandidates []int, currCombination *[]int, remind_target int, idxStart int, result *[][]int)
+  - 在內部先檢查目前輸入是不是已達reminder == 0
+    - 如果是，就把目前組合加入結果中
+    - 如果 reminder < 0 => 要將目前組合 pop() 並 return
+  - 其他就 for loop candidates 試著加一層組合到 currCombination 並用 checkCombination 去檢查

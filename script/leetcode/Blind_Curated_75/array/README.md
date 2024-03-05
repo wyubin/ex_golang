@@ -11,7 +11,15 @@ twoSum(nums []int, target int) []int
 # Container With Most Water
 [link](https://leetcode.com/problems/container-with-most-water/description/?envType=list&envId=xoqag3yj)
 
+## intro
+輸入 []int array為多個牆面的高度，每個牆的距離為 1，任選兩面牆為 boundary 來算面積，輸出最大面積
 
 ## plan
 ### try
-應該直接用一個 for loop 來做，但是要找出最大面積，所以要用兩個 pointer 來記錄，一個是 left pointer，一個是 right pointer
+- 直接用 for loop 來做，但是要找出最大面積，所以要用兩個 pointer 來記錄，一個是 left pointer，一個是 right pointer, 再用距離來計算面積
+- 這個解法有兩個 for loop...
+
+### solution
+要直接從最大寬度開始確認，直接設定兩邊 pointer，然後往中間移動，確認面積，如果面積比目前最大面積還大，就更新最大面積。
+另外在往內移動兩邊 pointer 的條件是只移動高度低的，因為只有提高高度低的才可能增加面積，因為 boundary 的最小值才能形成面積，
+

@@ -7,13 +7,18 @@ import (
 
 func maxArea(heights []int) int {
 	maxA := 0
+	idxLeft := 0
+	idxRight := len(heights) - 1
 
-	for i := 0; i < len(heights); i++ {
-		for j := len(heights) - 1; j > i; j-- {
-			area := slices.Min([]int{heights[i], heights[j]}) * (j - i)
-			if area > maxA {
-				maxA = area
-			}
+	for idxLeft < idxRight {
+		area := slices.Min([]int{heights[idxLeft], heights[idxRight]}) * (idxRight - idxLeft)
+		if area > maxA {
+			maxA = area
+		}
+		if heights[idxLeft] < heights[idxRight] {
+			idxLeft++
+		} else {
+			idxRight--
 		}
 	}
 	return maxA

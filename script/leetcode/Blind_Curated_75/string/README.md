@@ -20,3 +20,15 @@
         - i-j < 2(像是 `aa` or `aba`) 就直接 dp[i][j] = true
         - or dp[i-1][j+1] true(也就是內面那層確定是 Palindromic)，就 dp[i][j] = true 來延伸出去
     - 如果有延伸再確認 是否比maxlength 長，就可以紀錄現在最長的 maxSubstring
+
+# valid_parentheses
+有幾種括號是對應的 '(', ')', '{', '}', '[' and ']', 依據輸入的字串來確認是否有對應的括號
+
+## plan
+- 用一個map[byte]byte 來紀錄 括號的對應
+- 用 stack(後進先出) 紀錄應該後括號出現的順序，
+    - 如果是前括號，就append對應的後括號
+    - 如果不是前括號
+        - 遇到 stack 為空，就代表沒有對應的括號，回傳 false
+        - 就 pop 一個括號，來確認 current string 是否為對應的括號
+最後結束 loop 後，也要確認 stack 為空，回傳 true

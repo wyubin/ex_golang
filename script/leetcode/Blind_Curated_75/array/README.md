@@ -23,3 +23,18 @@ twoSum(nums []int, target int) []int
 要直接從最大寬度開始確認，直接設定兩邊 pointer，然後往中間移動，確認面積，如果面積比目前最大面積還大，就更新最大面積。
 另外在往內移動兩邊 pointer 的條件是只移動高度低的，因為只有提高高度低的才可能增加面積，因為 boundary 的最小值才能形成面積，
 
+# 3sum
+[link](https://leetcode.com/problems/3sum/)
+
+## intro
+輸入一個 []int, 確認有沒有三數相加為 0, int 可以重複
+
+## plan
+### think
+暴力法就是把 3sum 當作有參數的 2sum 去處理，但是時間複雜度會比 2sum 要慢很多
+但 twosum 是不重複，但 3sum 是可以有重複 item 的，所以無法用 2sum 去解
+
+### solution
+- 因為複雜度比2sum 高很多，基本上只能兩個 loop
+- 可以先將 []int 排序，用 i 做第一個int 的 idx, j/k 分別是第二個/第三個int 的 idx
+- i 不動，j 從 i+1 開始，k 從最後一個數開始, 如果 sun > 0，代表要減少，k-- else j++, 同時 j < k

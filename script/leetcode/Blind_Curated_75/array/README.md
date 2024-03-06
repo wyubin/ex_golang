@@ -69,3 +69,14 @@ twoSum(nums []int, target int) []int
     - 如果是，就把目前組合加入結果中
     - 如果 reminder < 0 => 要將目前組合 pop() 並 return
   - 其他就 for loop candidates 試著加一層組合到 currCombination 並用 checkCombination 去檢查
+
+# Rotate Image
+[link](https://leetcode.com/problems/rotate-image/)
+
+# intro
+將一個提供的 2d 矩陣做 往右 rotate
+
+# plan
+經過觀察及大部分的方法都是
+- 先將 2d 矩陣 transpose
+- 再將 2d 矩陣左右翻轉(column swap)

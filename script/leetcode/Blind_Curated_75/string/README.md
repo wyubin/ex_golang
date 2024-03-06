@@ -32,3 +32,11 @@
         - 遇到 stack 為空，就代表沒有對應的括號，回傳 false
         - 就 pop 一個括號，來確認 current string 是否為對應的括號
 最後結束 loop 後，也要確認 stack 為空，回傳 true
+
+# Group Anagrams
+將提供的 []string 分組, 擁有相同set 的 char 的 string 就是同一組
+
+# plan
+- 寫一個 func 把 string 轉成一個 sorted char 的string 作為 unique key
+- 用 sortedChar map[string][]string 去紀錄 相同 sorted char 的 string
+- 輸出 sortedChar 的 value

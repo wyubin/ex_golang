@@ -91,3 +91,17 @@ twoSum(nums []int, target int) []int
 概念是連續加總，
 - 需要一個 pointer 去紀錄最大加總, 另一個 pointer 紀錄 subarray 加總
 - 當subarray 的加總 < 0 時，代表這個subarray 已經無法讓後續的加總更大，就需要從這邊斷尾，將 sumSubarr 回歸為 0，並往前移動 point
+
+# Spiral Matrix
+[link](https://leetcode.com/problems/spiral-matrix/)
+
+# intro
+將一個 2d 矩陣轉為 spiral matrix  的 1d array
+
+# plan
+- 可以單純用走的路徑去 append int, 只是要注意，每次的方向要轉彎時， boundary 就要內縮 1
+  - left-right: top--
+  - top-bottom: right--
+  - right-left: bottom++
+  - bottom-top: left++
+- 直到 left > right 或 top > bottom 就可以 break

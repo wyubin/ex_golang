@@ -80,3 +80,14 @@ twoSum(nums []int, target int) []int
 經過觀察及大部分的方法都是
 - 先將 2d 矩陣 transpose
 - 再將 2d 矩陣左右翻轉(column swap)
+
+# Maximum Subarray
+[link](https://leetcode.com/problems/maximum-subarray/)
+
+# intro
+輸入一個 []int，輸出最大 subarray 的總和
+
+# plan
+概念是連續加總，
+- 需要一個 pointer 去紀錄最大加總, 另一個 pointer 紀錄 subarray 加總
+- 當subarray 的加總 < 0 時，代表這個subarray 已經無法讓後續的加總更大，就需要從這邊斷尾，將 sumSubarr 回歸為 0，並往前移動 point

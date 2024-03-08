@@ -145,3 +145,16 @@ twoSum(nums []int, target int) []int
 
 進一步:
 在 iter 時就邊確認 currEnd >= insertStart
+
+# Unique Paths
+[link](https://leetcode.com/problems/unique-paths/)
+
+## intro
+基本上這類有連續效應的計算，通常會藉由 DP 來紀錄已經計算過得結果，而且，通常也都會用 recursive 來做 subjob 的 implement
+
+## plan
+- 需要設定 dp, 是紀錄每一格到終點的可能路線
+- 因為每一格往下及往右才是最短路線，所以 dp[i][j] = dp[i+1][j] + dp[i][j+1]
+  - 但超過 dimesion 就直接回傳 0, 也就是沒這個方向的路線
+  - 如果 dp[i][j] 存在(!=0) 就直接回傳
+  - 如果沒有就把 dp[i+1][j] + dp[i][j+1] 存進去並 return

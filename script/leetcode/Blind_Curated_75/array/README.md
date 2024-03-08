@@ -105,3 +105,31 @@ twoSum(nums []int, target int) []int
   - right-left: bottom++
   - bottom-top: left++
 - 直到 left > right 或 top > bottom 就可以 break
+
+# Jump Game
+[link](https://leetcode.com/problems/jump-game/)
+
+## intro
+輸入一個 []int，每個數字代表可以往前進的距離，確認是否能夠到達最後一個 index，如果能到達則輸出 true，否則輸出 false
+
+## plan
+有點像是 骨牌遊戲或是加油策略，只是這問題是一直線的，而不是多線
+- 用一個 pointer 紀錄目前可以往前的最長步數
+- iteration時
+  - 將先前maxStep -1 並與目前的 value 比較，將較大的更新到 maxStep
+  - 如果 maxStep == 0 且 index 小於 lastIndex，代表無法往前，回傳 false
+- 最後回傳 true
+
+# Merge Intervals
+[link](https://leetcode.com/problems/merge-intervals/)
+
+## intro
+給一個含有 start, end []int 的 array, 輸出最後可合併完成的 [][]int
+
+## plan
+主要概念是先排序過後，後面的 interval 基本上頂多就跟前一個 overlap, 或是沒 overlap
+- 先將 input array 基於其 start 排序
+- 用一個 result [][]int 來記錄合併後的結果
+- iteration時
+  - 如果 currStart > result[-1][1], 就直接 append 到 result
+  - 如果 currEnd > result[-1][1], 就 update currEnd 到 result[-1][1]

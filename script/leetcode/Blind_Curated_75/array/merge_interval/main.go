@@ -7,10 +7,10 @@ import (
 
 func merge(intervals [][]int) [][]int {
 	slices.SortFunc(intervals, func(a, b []int) int { return a[0] - b[0] })
-	res := [][]int{}
-	for _, interval := range intervals {
+	res := [][]int{intervals[0]}
+	for _, interval := range intervals[1:] {
 		resLen := len(res)
-		if resLen == 0 || res[resLen-1][1] < interval[0] {
+		if res[resLen-1][1] < interval[0] {
 			res = append(res, interval)
 		} else if interval[1] > res[resLen-1][1] {
 			res[len(res)-1][1] = interval[1]

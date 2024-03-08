@@ -133,3 +133,15 @@ twoSum(nums []int, target int) []int
 - iteration時
   - 如果 currStart > result[-1][1], 就直接 append 到 result
   - 如果 currEnd > result[-1][1], 就 update currEnd 到 result[-1][1]
+
+# Insert Interval
+[link](https://leetcode.com/problems/insert-interval/)
+
+## intro
+給一個 沒有overlap 的 interval array，輸入一個 interval，輸出插入後的 interval array，並且要維持沒有 overlap 的狀態
+
+## plan
+可以 follow merge intervals 的概念，先把 insert interval 丟進去，再 sort 一次，再 iter 確認overlap, 但就是 O(NlogN)
+
+進一步:
+在 iter 時就邊確認 currEnd >= insertStart

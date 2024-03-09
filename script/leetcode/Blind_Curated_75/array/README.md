@@ -158,3 +158,23 @@ twoSum(nums []int, target int) []int
   - 但超過 dimesion 就直接回傳 0, 也就是沒這個方向的路線
   - 如果 dp[i][j] 存在(!=0) 就直接回傳
   - 如果沒有就把 dp[i+1][j] + dp[i][j+1] 存進去並 return
+
+# Climbing Stairs
+[leetcode link](https://leetcode.com/problems/climbing-stairs/)
+
+## intro
+給一個距離 int, 每次只能走一步或兩步，計算可以剛好走完的步數組合
+
+## plan
+因為有兩種步伐長度，而又是累積效應，所以一樣可以用dp 去做
+- 可以觀察到從總距從 2 to 3, 除了原來直接把2的組合各 +1 之外，因為最後一步可以走 2, 所以也要加上從 1 直接加上兩步的組合
+- 於是 dp[i] = dp[i-1] + dp[i-2]
+
+# Set Matrix Zeroes
+[leetcode link](https://leetcode.com/problems/set-matrix-zeroes/)
+
+## intro
+給一個矩陣，0 的值，對應的整個 column 跟 整個 row 都要是 0
+
+## plan
+- 一次 for loop 依序去改看起來無法，應該是一次 iter 標記需要 column & row index 再第二次 for loop 去改

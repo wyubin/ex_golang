@@ -178,3 +178,31 @@ twoSum(nums []int, target int) []int
 
 ## plan
 - 一次 for loop 依序去改看起來無法，應該是一次 iter 標記需要 column & row index 再第二次 for loop 去改
+
+# Word Search
+[link](https://leetcode.com/problems/word-search)
+
+# intro
+基於一個提供的 char matrix, input string 並從 matrix 中確認是否能找到連續字串，找到就回傳 true，沒有則回傳 false
+
+# plan
+算是從一個 entry point 後，開始從四周開始找node 的方式，很像 dfs, 一樣也是用 recursive 去實做
+- dfs 有幾個參數
+  - board: 二維matrix
+  - word: 目標字串
+  - i: curr row index
+  - j: curr col index
+  - k: 目前已經找到 word 的第幾個 index
+  - 已經看過的座標 paths
+- 在 dfs 的結束條件有
+  - k == len(word) -> 回傳 true
+  - 無法往下走 -> 回傳 false
+    - i 超過 board 的 row 範圍
+    - j 超過 board col idx 範圍
+    - word[k] != board[r][c]
+    - i,j 存在 paths 中
+  - 如果以上過了代表可以往下走
+    - 先將 i,j 記到 paths，然後再往上下左右走
+    - 如果可以往下走就 return true
+    - 不能到最後的話要 backtrace
+- 有了 dfs 之後，iter board 的

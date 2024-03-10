@@ -40,3 +40,27 @@
 - 寫一個 func 把 string 轉成一個 sorted char 的string 作為 unique key
 - 用 sortedChar map[string][]string 去紀錄 相同 sorted char 的 string
 - 輸出 sortedChar 的 value
+
+# minimun window substring
+[link](https://leetcode.com/problems/minimum-window-substring)
+
+## intro
+針對一個字串 s，給定一個較小字串 t，輸出一個在 s 可以找到的最小 window會包含所有的 t char
+
+## plan
+- 如果只是從兩邊 narrow down 直到區域中字串完全包含 t，那可能會找到錯誤區段，所以的確還是需要 iteration 去找真正最小的 substring
+- 用 byte2count 來存 t char 的出現次數, 並且init minlen 跟 start_idx 來標記出現最小 sunstring 的資料
+- count 來紀錄目前在 s 還需要掃的 t char
+- 最外面的 iter 是 把 end 往後，當 curr byte 是存在 t char 時，就減少 byte2count 及 count
+ - 直到 count ==0 時，就開始移動 start, 直到 currbyte 有在 byte2count 時, 再將 byte2count 及 count ++
+ - 然後 end 會再開始往前移動直到 len(s)-1
+
+# Decode Ways
+[link](https://leetcode.com/problems/decode-ways)
+
+## intro
+decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的字串，給定一串數字，輸出有幾種decode 方法
+
+## plan
+- decode 的方法數也是可以前後加起來的，所以一樣可以用 DP 來解
+- 有點像每次只能走一步或兩步的 stair 解法，但每次還需要確認一步或兩步是不是在 mapping 中

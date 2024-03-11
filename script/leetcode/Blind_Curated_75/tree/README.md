@@ -57,3 +57,19 @@ BST: left < root < right
 - preorder: root -> left -> right
 - inorder: left -> root -> right, 所以可以用 inorder 的 val 建立 map 存 inorder 的 index
 - 建立 recursive func(preorder, inorderMap, currIdx, leftIdx, rightIdx), 並把 preorder 的 list 傳入, leftIdx 跟 rightIdx 是指此範圍的 inorder values, 如果 leftIdx > rightIdx 就回傳 nil
+
+
+# binary tree maximum path sum
+[link](https://leetcode.com/problems/binary-tree-maximum-path-sum/)
+
+## intro
+給一個 BST, 從裡面找出最大的 path sum， path 就是一個不重複走的線
+
+## plan
+- 一樣會是一個 recursive func(maxGain), 計算以這個 node 為 root 的 maxSum
+  - 當 node 為 nil 時直接 return 0(等於不走)
+  - 計算 currMaxSum
+    - leftGain 為 max(maxGain(leftNode), 0), 如果 0 就是不走左邊
+    - rightGain 同理
+    - currMaxSum 可以是 leftGain + node.Val + rightGain, 如果 > maxPathSum 就更新
+  - return MaxBranch, 如果是要 return branch 給parent 接，就只能在 leftGain/rjghtGain 選一條線, MaxBranch = node.val + max(leftGain, rjghtGain)

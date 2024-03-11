@@ -206,3 +206,16 @@ twoSum(nums []int, target int) []int
     - 如果可以往下走就 return true
     - 不能到最後的話要 backtrace
 - 有了 dfs 之後，iter board 的
+
+# best time to buy and sell stock
+[leetcode link](https://leetcode.com/problems/best-time-to-buy-and-sell-stock/)
+
+## intro
+給一個[]int, 計算最大利潤
+
+## plan
+- 用 buyIdx/sellIdx 兩個 point 紀錄買進買出的點, init 0
+- 用maxProfit 紀錄最大利潤
+- iter sellIdx
+  - 如果 price[sellIdx] > price[buyIdx], 就更新maxProfix
+  - 否則(虧錢)，就把 buyIdx 設為 sellIdx，再把 sellIdx + 1

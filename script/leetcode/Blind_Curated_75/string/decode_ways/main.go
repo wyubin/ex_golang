@@ -5,6 +5,26 @@ import (
 	"strconv"
 )
 
+func dumpDecode(encStr string, idx int, code map[string]struct{}, dp map[int]int) int {
+	if idx < 0 {
+		return 0
+	}
+	numDecode, found := dp[idx]
+	if found {
+		return numDecode
+	}
+	code1 := encStr[idx-1 : idx]
+	code2 := encStr[idx-2 : idx]
+	dp[idx] = 0
+	if _, ok := code[code1]; ok {
+		dp[idx] += dumpDecode(encStr, idx-1, code, dp)
+	}
+	if _, ok := code[code2]; ok {
+		dp[idx] += dumpDecode(encStr, idx-2, code, dp)
+	}
+	return dp[idx]
+}
+
 func solution(numstr string) int {
 	dp := map[int]int{}
 	code := map[string]struct{}{}
@@ -16,20 +36,10 @@ func solution(numstr string) int {
 	}
 	dp[0] = 1
 	dp[1] = 1
-	for i := 2; i <= len(numstr); i++ {
-		code1 := numstr[i-1 : i]
-		code2 := numstr[i-2 : i]
-		if _, ok := code[code1]; ok {
-			dp[i] += dp[i-1]
-		}
-		if _, ok := code[code2]; ok {
-			dp[i] += dp[i-2]
-		}
-	}
-	return dp[len(numstr)]
+	return dumpDecode(numstr, len(numstr), code, dp)
 }
 func main() {
-	s := "226619"
+	s := "226"
 	k := solution(s)
 	fmt.Printf("k:%+v\n", k)
 }

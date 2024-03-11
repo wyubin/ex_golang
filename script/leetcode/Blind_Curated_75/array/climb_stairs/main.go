@@ -3,9 +3,6 @@ package main
 import "fmt"
 
 func dumpSteps(distance int, dp map[int]int) int {
-	if distance == 0 || distance == 1 {
-		return 1
-	}
 	stepsTmp, found := dp[distance]
 	if found {
 		return stepsTmp
@@ -16,6 +13,8 @@ func dumpSteps(distance int, dp map[int]int) int {
 
 func climbStairs(distance int) int {
 	dp := map[int]int{}
+	dp[0] = 1
+	dp[1] = 1
 	return dumpSteps(distance, dp)
 }
 

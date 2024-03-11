@@ -46,3 +46,14 @@ BST: left < root < right
     - 如果 node 為 nil，回傳 0
     - 否則就 recursive 找比較長的 depth
     - +1 輸出
+
+# Construct Binary Tree from Preorder and Inorder Traversal
+[link](https://leetcode.com/problems/construct-binary-tree-from-preorder-and-inorder-traversal/)
+
+## intro
+給一個 preorder 和 inorder，輸出一個 tree
+
+## plan
+- preorder: root -> left -> right
+- inorder: left -> root -> right, 所以可以用 inorder 的 val 建立 map 存 inorder 的 index
+- 建立 recursive func(preorder, inorderMap, currIdx, leftIdx, rightIdx), 並把 preorder 的 list 傳入, leftIdx 跟 rightIdx 是指此範圍的 inorder values, 如果 leftIdx > rightIdx 就回傳 nil

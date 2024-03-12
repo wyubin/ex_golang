@@ -219,3 +219,21 @@ twoSum(nums []int, target int) []int
 - iter sellIdx
   - 如果 price[sellIdx] > price[buyIdx], 就更新maxProfix
   - 否則(虧錢)，就把 buyIdx 設為 sellIdx，再把 sellIdx + 1
+
+# longest consequtive sequences
+[leetcode link](https://leetcode.com/problems/longest-consecutive-sequence)
+
+## intro
+給一個 []int, 計算最長連續數字
+
+## plan
+先用 map 紀錄item使用狀況，並用 pre/next 來 extend 每次的 seed 直到不連續
+- 先用一個 map[int]bool(num2left) 去紀錄已經用過的數字，先都填 true
+- init maxLen
+- 再 iter nums(with num2left == false)
+  - init currLen, preNum, nextNum = 1, num-1, num+1
+  - while num2left[preNum] == false, currLen++, num2left[preNum] = true, preNum--
+  - while num2left[nextNum] == false, currLen++, num2left[nextNum] = true, nextNum++
+  - if currLen > maxLen, maxLen = currLen
+
+- return maxLen

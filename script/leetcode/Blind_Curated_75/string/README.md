@@ -64,3 +64,16 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
 ## plan
 - decode 的方法數也是可以前後加起來的，所以一樣可以用 DP 來解
 - 有點像每次只能走一步或兩步的 stair 解法，但每次還需要確認一步或兩步是不是在 mapping 中
+
+# Valid Palindrome
+[link](https://leetcode.com/problems/valid-palindrome)
+
+## intro
+給一個字串，若除去 Alphanumeric 以外的字元後，字串是否回文
+
+## plan
+- 可以先將本來字串做 lower case
+- 定兩個 pointer 分別是 left/right 是開始及結束
+    - 如果不是 alphanumeric 就移動 pointer
+    - 再來比較是否相等, 如果不是就直接 return false
+- 最後 return true

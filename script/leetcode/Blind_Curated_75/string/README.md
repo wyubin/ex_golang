@@ -77,3 +77,20 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
     - 如果不是 alphanumeric 就移動 pointer
     - 再來比較是否相等, 如果不是就直接 return false
 - 最後 return true
+
+
+# Word break
+[link](https://leetcode.com/problems/word-break)
+
+## intro
+給定一個 string 來判斷是否能用 word list 去完整 break 這個 string
+
+## plan
+- 先 init maxDictWord 來紀錄可用的最長 word
+- 用 DP(len(string)+1) 去記錄在 string 的 j:i 位置能不能 break(也就是存在於 dictWord), 如果存在 wordDict 就可以在 DP[i] = true 代表這邊是可以斷點的，所以當 DP[len(string)] = true 就代表 string 可以被完整切成多個 word
+
+- iter
+    - for loop i from 1 to len(string)
+        - for loop j from i-1 to i-1-maxDictWord, 也就是一次檢查一個word
+            - 如果 DP[j] == true && string[j:i] in wordDict 就代表這裡可以是斷點, DP[i] = true, 然後 break
+以上的 iter 等於 用一個 可變的window(j:i) 去看 string 來紀錄累積的斷點直到最後

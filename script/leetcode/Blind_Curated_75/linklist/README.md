@@ -24,3 +24,12 @@
 ## merge_k_sorted_list
 [link](https://leetcode.com/problems/merge-k-sorted-lists/)
 基本上就是for loop 的 merge two linked list
+
+# cycle linked list
+[link](https://leetcode.com/problems/linked-list-cycle/)
+
+## intro
+輸入一個 linked list，判斷是否有 cycle
+
+## plan
+- 用兩個 pointer 來 triverse linked list, 一快一慢，如果沒遇到 nil, 當 fast.node == slow.node 代表有 cycle return true

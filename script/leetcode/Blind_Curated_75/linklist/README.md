@@ -33,3 +33,24 @@
 
 ## plan
 - 用兩個 pointer 來 triverse linked list, 一快一慢，如果沒遇到 nil, 當 fast.node == slow.node 代表有 cycle return true
+
+
+## reorder list
+[link](https://leetcode.com/problems/reorder-list/)
+
+## intro
+輸入一個 linked list，順序換成 n1->n5->n2->n4->n3 輸出新的 linked list
+
+## plan
+概念是用兩個 pointer 把 list([1,2,3,4,5]) 拆成前半([1,2,3])跟後半([4,5]), 把後半做 reverse, 然後在一個個合併，這邊會用到許多 linked list 的 operation
+- split list
+ - 直接用 fast/slow 的 point 直到 fast == nil, 那後半會是 slow.next
+- reverse
+ - 用 pre 跟 curr 做 iter 的 next 交換，中間用 tmpNode 暫存
+- merge
+ - head1 = head, head2 = pre(reverse list)
+ - for head2 != nil 時
+    - 暫存 tmpNode = head1.next
+    - head1.next = head2
+    - head2 = head2.next
+    - head1 = tmpNode

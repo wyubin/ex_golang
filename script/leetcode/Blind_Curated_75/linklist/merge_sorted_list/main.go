@@ -2,32 +2,6 @@ package main
 
 import "fmt"
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (s *ListNode) String() string {
-	strContent := ""
-	for node := s; node != nil; node = node.Next {
-		if strContent != "" {
-			strContent += ","
-		}
-		strContent += fmt.Sprintf("%d", node.Val)
-	}
-	return fmt.Sprintf("[%s]", strContent)
-}
-
-func slice2ListNode(nums []int) *ListNode {
-	head := &ListNode{}
-	curr := head
-	for _, val := range nums {
-		curr.Next = &ListNode{Val: val}
-		curr = curr.Next
-	}
-	return head.Next
-}
-
 func solution(list1 *ListNode, list2 *ListNode) *ListNode {
 	dummy := ListNode{}
 	curr := &dummy
@@ -53,11 +27,11 @@ func solution(list1 *ListNode, list2 *ListNode) *ListNode {
 }
 
 func main() {
-	list1 := slice2ListNode([]int{1, 2, 4})
-	list2 := slice2ListNode([]int{1, 3, 4})
+	list1 := slice2ListNode([]int{1, 2, 4}, -1)
+	list2 := slice2ListNode([]int{1, 3, 4}, -1)
 	// fmt.Printf("k: %s\n", solution(list1, list2))
 	// merge k liked list
-	all_list := []*ListNode{list2, slice2ListNode([]int{1, 2, 5})}
+	all_list := []*ListNode{list2, slice2ListNode([]int{1, 2, 5}, -1)}
 	res := &ListNode{Next: list1}
 	for i := 0; i < len(all_list); i++ {
 		res = solution(res, all_list[i])

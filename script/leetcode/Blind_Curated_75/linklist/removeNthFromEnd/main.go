@@ -9,11 +9,13 @@ type ListNode struct {
 
 func (s *ListNode) String() string {
 	strContent := ""
-	for node := s; node != nil; node = node.Next {
+	visited := map[*ListNode]bool{}
+	for node := s; node != nil && !visited[node]; node = node.Next {
 		if strContent != "" {
 			strContent += ","
 		}
 		strContent += fmt.Sprintf("%d", node.Val)
+		visited[node] = true
 	}
 	return fmt.Sprintf("[%s]", strContent)
 }

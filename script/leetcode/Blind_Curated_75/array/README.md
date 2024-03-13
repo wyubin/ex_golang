@@ -255,7 +255,7 @@ twoSum(nums []int, target int) []int
 
 ## plan
 一樣用 `Search in Rotated Sorted Array` 的概念，用 binary search, 
-- 如果 nums[mid] > nums[start], 代表minimun 在右邊，所以 start = mid + 1
+- 如果 nums[mid] > nums[end], 代表minimun 在右邊，所以 start = mid + 1, 
 - 反之, 代表minimun 在左邊，所以 end = mid
 無限逼近 while start < end
 

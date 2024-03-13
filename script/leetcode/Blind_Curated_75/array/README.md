@@ -237,3 +237,12 @@ twoSum(nums []int, target int) []int
   - if currLen > maxLen, maxLen = currLen
 
 - return maxLen
+
+# Maximum Product Subarray
+[leetcode link](https://leetcode.com/problems/maximum-product-subarray)
+
+## intro
+給一個[]int, 計算最大乘積
+
+## plan
+需要考慮的跟 max sum 不同, 因為都是整數，只是可能有負數，或是遇到 0 就要 reset(prevProd=1)再繼續。 另外連乘有正負號因此會有方向性，分別從正向跟順向去找 maxProduct 應該就可以了

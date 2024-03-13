@@ -246,3 +246,17 @@ twoSum(nums []int, target int) []int
 
 ## plan
 需要考慮的跟 max sum 不同, 因為都是整數，只是可能有負數，或是遇到 0 就要 reset(prevProd=1)再繼續。 另外連乘有正負號因此會有方向性，分別從正向跟順向去找 maxProduct 應該就可以了
+
+# find minimum in rotated Sorted array
+[leetcode link](https://leetcode.com/problems/find-minimum-in-rotated-sorted-array)
+
+## intro
+給一個 rotated Sorted []int, 計算最小值
+
+## plan
+一樣用 `Search in Rotated Sorted Array` 的概念，用 binary search, 
+- 如果 nums[mid] > nums[start], 代表minimun 在右邊，所以 start = mid + 1
+- 反之, 代表minimun 在左邊，所以 end = mid
+無限逼近 while start < end
+
+最後 return nums[start]

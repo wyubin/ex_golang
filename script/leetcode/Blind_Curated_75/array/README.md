@@ -260,3 +260,15 @@ twoSum(nums []int, target int) []int
 無限逼近 while start < end
 
 最後 return nums[start]
+
+# house robber
+[leetcode link](https://leetcode.com/problems/house-robber)
+
+## intro
+給一個[]int, 是每個家庭所擁有的金錢, 賊不能一晚連續偷兩家，試問一晚最多能偷多少錢
+
+## plan
+- 又是堆疊問題，可以用 dp 暫存偷到第幾家時，拿到到最多錢
+- recursive func 是偷到第幾家時，拿到最多錢, 參數有三個, nums, dp, index
+ - 當 i<0 代表沒有家了，回傳 0
+ - 偷到第 i 個家時，拿到最多錢 dp[i] = max(nums[i] + dp[i-2], dp[i-1]), 也就是說要看你是偷 i-1 會比較多錢還是偷 i-2 + nums[i] 會比較多錢

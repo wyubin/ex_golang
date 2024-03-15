@@ -281,3 +281,15 @@ twoSum(nums []int, target int) []int
 搜尋方法跟 word search 很像，只是要有一個 map 紀錄已經看過的點(x_y set), for loop 如果是 1 又沒看過就又進到 recursive 去 extend 看過的點 並 island++, 不然就 continue
 
 ## plan
+
+
+# course schedule
+[leetcode link](https://leetcode.com/problems/course-schedule)
+
+## intro
+給定一個有向圖，如果能完成所有課程，回傳 true，否則回傳 false
+
+## plan
+### 概念
+- 可以用 prer2course 來紀錄需要先修的課程，同時用 indegree 來記錄每個課程需要多少課程先修, 先從沒有 indegree 的課程開始來檢查, ，visited node 都在 indegree 減一, 如果 node indegree 為 0，就把它加入 queue，直到 queue 為空
+- 如果可以修完的課程數不等於課程數，代表有課程還沒修完，回傳 false，否則回傳 true

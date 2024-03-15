@@ -46,7 +46,8 @@
 - split list
  - 直接用 fast/slow 的 point 直到 fast == nil, 那後半會是 slow.next
 - reverse
- - 用 pre 跟 curr 做 iter 的 next 交換，中間用 tmpNode 暫存
+ - init prev = nil, curr = slow.next, tmpNode = nil
+ - while curr != nil 中，把 curr.next 先記載 tmp, 把 curr.next = prev, prev = curr, curr = tmp, 這樣就完成把 原curr 的 next 改成 prev, 並且 curr 往前移動
 - merge
  - head1 = head, head2 = pre(reverse list)
  - for head2 != nil 時

@@ -54,3 +54,12 @@
     - head1.next = head2
     - head2 = head2.next
     - head1 = tmpNode
+
+# reverse linked list
+[link](https://leetcode.com/problems/reverse-linked-list/)
+
+## intro
+輸入一個 linked list，回傳反轉後的 linked list
+
+## plan
+可以直接follow reorder list 的 reverse 部分實作

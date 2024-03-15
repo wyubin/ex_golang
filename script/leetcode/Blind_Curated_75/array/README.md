@@ -272,3 +272,12 @@ twoSum(nums []int, target int) []int
 - recursive func 是偷到第幾家時，拿到最多錢, 參數有三個, nums, dp, index
  - 當 i<0 代表沒有家了，回傳 0
  - 偷到第 i 個家時，拿到最多錢 dp[i] = max(nums[i] + dp[i-2], dp[i-1]), 也就是說要看你是偷 i-1 會比較多錢還是偷 i-2 + nums[i] 會比較多錢
+
+
+# number of islands
+[leetcode link](https://leetcode.com/problems/number-of-islands)
+
+## intro
+搜尋方法跟 word search 很像，只是要有一個 map 紀錄已經看過的點(x_y set), for loop 如果是 1 又沒看過就又進到 recursive 去 extend 看過的點 並 island++, 不然就 continue
+
+## plan

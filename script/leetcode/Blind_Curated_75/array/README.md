@@ -273,6 +273,9 @@ twoSum(nums []int, target int) []int
  - 當 i<0 代表沒有家了，回傳 0
  - 偷到第 i 個家時，拿到最多錢 dp[i] = max(nums[i] + dp[i-2], dp[i-1]), 也就是說要看你是偷 i-1 會比較多錢還是偷 i-2 + nums[i] 會比較多錢
 
+## ext
+延伸，如果 house 是圓形排列，那就代表 1th 跟 last 是不能同時偷的，那計算方式需要改嗎？
+不用，只要算出 rob(s[:-1]) 跟 rob(s[1:]) 是哪個比較多
 
 # number of islands
 [leetcode link](https://leetcode.com/problems/number-of-islands)

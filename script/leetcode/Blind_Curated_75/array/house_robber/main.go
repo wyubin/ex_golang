@@ -28,4 +28,9 @@ func main() {
 	s := []int{2, 7, 9, 3, 1}
 	k := solution(s)
 	fmt.Printf("k: %d\n", k)
+	// if house arrange like a circle
+	s = []int{2, 3, 2}
+	k = slices.Max([]int{solution(s[:len(s)-1]), solution(s[1:])})
+	fmt.Printf("k: %d\n", k)
+
 }

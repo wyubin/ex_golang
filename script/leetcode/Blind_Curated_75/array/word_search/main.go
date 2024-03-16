@@ -52,4 +52,14 @@ func main() {
 	}
 	word := "ABCCED"
 	fmt.Println(solution(board, word))
+	// ext, word search 2
+	board = [][]string{
+		{"o", "a", "a", "n"},
+		{"e", "t", "a", "e"},
+		{"i", "h", "k", "r"},
+	}
+	for _, word := range []string{"oath", "pea", "eat", "rain"} {
+		k := solution(board, word)
+		fmt.Printf("search[%s]: %+v\n", word, k)
+	}
 }

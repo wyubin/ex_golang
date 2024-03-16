@@ -83,3 +83,13 @@ Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來�
 
 ## plan
 每個 treeNode 有一個 map[]child
+
+
+# design add and search words data structure
+[link](https://leetcode.com/problems/design-add-and-search-words-data-structure/)
+
+## intro
+建立一個 word dictionary 能夠新增 word, 另外可以'.'來做 wirecard search
+
+## plan
+基於 Trie implement 來 建立 word dictionary

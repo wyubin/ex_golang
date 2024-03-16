@@ -39,7 +39,34 @@ func (s *Trie) HasPrefix(searchWord string) bool {
 	return s.checkPrefix(searchWord, false)
 }
 
+func (s *Trie) Search(searchWord string) bool {
+	return search(s, searchWord)
+}
+
 func NewTrie() *Trie {
 	res := Trie{child: map[rune]*Trie{}}
 	return &res
+}
+
+// recursive search can including '.'
+func search(trie *Trie, inWord string) bool {
+	if len(inWord) == 0 {
+		// return if trie end
+		return trie.isWord
+	}
+	currByte := inWord[0]
+	if currByte == '.' {
+		for _, nextTrie := range trie.child {
+			if search(nextTrie, inWord[1:]) {
+				return true
+			}
+		}
+		return false
+	} else {
+		nextTrie, found := trie.child[rune(currByte)]
+		if !found {
+			return false
+		}
+		return search(nextTrie, inWord[1:])
+	}
 }

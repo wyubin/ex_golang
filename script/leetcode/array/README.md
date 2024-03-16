@@ -63,3 +63,12 @@ numsTmp := append(nums[indLast:], nums[:indLast]...)
 func singleNumber(nums []int) int
 ```
 - 一樣用 hash 輔助，如果第二次看到就從hash 刪掉，最後剩下的map 就是single
+
+# contains duplicate
+[link](https://leetcode.com/problems/contains-duplicate)
+
+## intro
+給一個 []int, 確認是否有重複
+
+## plan
+直接以 map[int]struct{} for loop 邊紀錄邊確認有沒有重複記錄，一發現就 return ture, 最後 return false

@@ -73,3 +73,13 @@ BST: left < root < right
     - rightGain 同理
     - currMaxSum 可以是 leftGain + node.Val + rightGain, 如果 > maxPathSum 就更新
   - return MaxBranch, 如果是要 return branch 給parent 接，就只能在 leftGain/rjghtGain 選一條線, MaxBranch = node.val + max(leftGain, rjghtGain)
+
+
+# implement trie
+[link](https://leetcode.com/problems/implement-trie-prefix-tree/)
+
+## intro
+Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來建立字庫，並可以用 search/startsWith 來搜尋 prefix
+
+## plan
+每個 treeNode 有一個 map[]child

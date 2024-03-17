@@ -94,3 +94,13 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
         - for loop j from i-1 to i-1-maxDictWord, 也就是一次檢查一個word
             - 如果 DP[j] == true && string[j:i] in wordDict 就代表這裡可以是斷點, DP[i] = true, 然後 break
 以上的 iter 等於 用一個 可變的window(j:i) 去看 string 來紀錄累積的斷點直到最後
+
+
+# valid anagram
+[link](https://leetcode.com/problems/valid-anagram)
+
+## intro
+輸入兩個 string, 測試兩者是否為 anagram
+
+## plan
+簡單用 char2len map[rune]int 用兩個 forloop 就可以解

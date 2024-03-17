@@ -93,3 +93,17 @@ Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來�
 
 ## plan
 基於 Trie implement 來 建立 word dictionary
+
+
+# invert binary tree
+[link](https://leetcode.com/problems/invert-binary-tree/)
+
+## intro
+給一個 binary tree並 return 一個 invert tree
+
+## plan
+基本上也就是熟悉 binary tree 的操作, 做一個 invert tree 的 recursive func 就可以
+- 當 nil 就直接 return input tree
+- 先 call leftnode 跟 rightnode 的 invert
+- 再來 swap leftnode 跟 rightnode
+- 最後 return input tree

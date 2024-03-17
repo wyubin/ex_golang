@@ -296,3 +296,16 @@ twoSum(nums []int, target int) []int
 ### 概念
 - 可以用 prer2course 來紀錄需要先修的課程，同時用 indegree 來記錄每個課程需要多少課程先修, 先從沒有 indegree 的課程開始來檢查, ，visited node 都在 indegree 減一, 如果 node indegree 為 0，就把它加入 queue，直到 queue 為空
 - 如果可以修完的課程數不等於課程數，代表有課程還沒修完，回傳 false，否則回傳 true
+
+
+# product of array except self
+[leetcode link](https://leetcode.com/problems/product-of-array-except-self)
+
+## intro
+給一個 src []int, return 一個 []int為 src[i] 以外的其他數字的 product
+
+## plan
+最佳化的方法很簡單，先 init prefix 跟 suffix 兩個 []int,
+- prifix 從 i=1 累乘到 n-1
+- suffix 從 i=n-2 累乘到 0
+- return prefix * suffix

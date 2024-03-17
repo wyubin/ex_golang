@@ -107,3 +107,26 @@ Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來�
 - 先 call leftnode 跟 rightnode 的 invert
 - 再來 swap leftnode 跟 rightnode
 - 最後 return input tree
+
+# kth smallest element in a BST
+[link](https://leetcode.com/problems/kth-smallest-element-in-a-bst/)
+
+## intro
+以 BST 的順序給一個 []int, 並指定一個 k int 來找出第 k 小的元素
+
+## plan
+先依照 BST 的方式建立 tree, 再以 inorder retrive 拿到inorderNodes []*TreeNode, inorderNode[k-1].val 就試了 
+
+
+# lowest common ancestor of a binary search tree
+[link](https://leetcode.com/problems/lowest-common-ancestor-of-a-binary-search-tree/)
+
+## intro
+給一個 BST，找出兩個 node 的 LCA
+
+## plan
+先排序 兩個 node 為 a,b
+如果是 binary tree 的話，持續從 root node 去 retrive
+- 如果 rootVal > b, 則 繼續往 root.left 找
+- 如果 rootVal < a, 則 繼續往 root.right 找
+- return root

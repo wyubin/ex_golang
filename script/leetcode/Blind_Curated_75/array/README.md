@@ -309,3 +309,18 @@ twoSum(nums []int, target int) []int
 - prifix 從 i=1 累乘到 n-1
 - suffix 從 i=n-2 累乘到 0
 - return prefix * suffix
+
+# meeting rooms
+[leetcode link](https://leetcode.com/problems/meeting-rooms)
+
+## intro
+給一個 meeting period [][]int{{0,30}, {5,10}, {15,20}}, 計算是否有重疊的 meeting
+
+## plan
+先基於 start 排序, 再 for loop 檢查currEnd > nextStart，如果有就 return false，否則 true
+
+## ext
+接下去問，試著計算出所指定的 meeting period 需要最小幾個會議室
+
+### plan
+可以用一個 time2room map[int]int{} 來記錄會議時間如果 start 是 +1, 如果 end 是 -1, 下一個 loop 則是分別用 roomCount 計算目前有幾個會議室，maxRoom = max(roomCount, maxRoom)

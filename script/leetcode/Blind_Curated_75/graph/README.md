@@ -17,3 +17,14 @@
         - 總是 append node2clone[child] 到 node2clone[currNode].neighbors
 
 - return rootNodeClone
+
+
+# graph valid tree
+[link](https://leetcode.com/problems/clone-graph/description/)
+
+## intro
+給一個 graph，輸出是否有滿足條件的 tree(所有 node 都有相互連結, 沒有 cycle)
+
+## plan
+藉由 DFS 確認是否有 cycle，沒有就回傳 true，有就回傳 false, 藉由 visitNodes 來確認是否所有 node 都被訪問過
+

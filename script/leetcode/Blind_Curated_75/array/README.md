@@ -344,7 +344,7 @@ twoSum(nums []int, target int) []int
 給一個 []string, 按照字典序排列，回傳最短字典序的排列
 
 ## plan
-- 用一個 charOrder 26*26 的 [][]int 來紀錄每個字母前一個字母是否有相連的線，用 iter words 兩兩相比，只要有 char 不同，就可以記錄 charOrder[char1][char2] = true，然後break 看下一對，就可以建立 graph
+- 用一個 charOrder 26*26 的 [][]bool 來紀錄每個字母前一個字母是否有相連的線，用 iter words 兩兩相比，只要有 char 不同，就可以記錄 charOrder[char1][char2] = true，然後break 看下一對，就可以建立 graph
 - 接下來用 dfs(charOrder, runeCurr, visited, charSeq) 來做recursive，用 visited 來記錄已經走過的點
   - 如果 !charOrder[runeCurr][runeCurr] 就直接 return(代表字典沒這個字, 不記順序)
   - 紀錄 visited[rune] = true, 然後找上一個 char(forloop charSeq)

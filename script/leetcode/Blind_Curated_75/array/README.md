@@ -324,3 +324,30 @@ twoSum(nums []int, target int) []int
 
 ### plan
 可以用一個 time2room map[int]int{} 來記錄會議時間如果 start 是 +1, 如果 end 是 -1, 下一個 loop 則是分別用 roomCount 計算目前有幾個會議室，maxRoom = max(roomCount, maxRoom)
+
+# missing number
+[leetcode link](https://leetcode.com/problems/missing-number)
+
+## intro
+給一個 []int, 長度為 n, 包含 0 到 n，回傳缺少的數字
+
+## plan
+- 直接 sort 再iter 確認 n[idx] == idx, 如果是就回傳 idx
+- 或是用累加公式， 1 + 2 + 3 + ... + n = n * (n + 1) / 2, 再減去 sum(nums)
+
+
+# alien dictionary
+[leetcode link](https://leetcode.com/problems/alien-dictionary)
+[ref](https://www.cnblogs.com/grandyang/p/5250200.html)
+
+## intro
+給一個 []string, 按照字典序排列，回傳最短字典序的排列
+
+## plan
+- 用一個 charOrder 26*26 的 [][]int 來紀錄每個字母前一個字母是否有相連的線，用 iter words 兩兩相比，只要有 char 不同，就可以記錄 charOrder[char1][char2] = true，然後break 看下一對，就可以建立 graph
+- 接下來用 dfs(charOrder, runeCurr, visited, charSeq) 來做recursive，用 visited 來記錄已經走過的點
+  - 如果 !charOrder[runeCurr][runeCurr] 就直接 return(代表字典沒這個字, 不記順序)
+  - 紀錄 visited[rune] = true, 然後找上一個 char(forloop charSeq)
+    - 如果 i==runeCurr || !charOrder[i][runeCurr] 就 continue
+    - 如果 visited[i] == true 就 false(看過但順序還沒寄？)
+    - dfs(charOrder, i, visited, charSeq), 如果 dfs 回傳 true 就 可以寫接下去的順序

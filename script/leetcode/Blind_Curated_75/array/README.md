@@ -391,3 +391,13 @@ twoSum(nums []int, target int) []int
   - 如果使用 idxCoin, currCoinCount = 1 + minCoinCount(dp, coins, idxCoin, amount-coins[idxCoin])
   - dp[idxCoin][amount] = min(currCoinCount, nextCoinCount)
 - 最後 return dp[idxCoin][amount]
+
+# top k frequent elements
+[leetcode link](https://leetcode.com/problems/top-k-frequent-elements)
+
+## intro
+給一個 []int with repeat, k int, 回傳前 k 重複多的元素
+
+## plan
+不用想得太複雜，其實就是 map -> pair -> sort
+

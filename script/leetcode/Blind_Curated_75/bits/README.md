@@ -34,3 +34,12 @@
 
 ## plan
 產生 src []int 之後，用 for loop 計算每個 i 的 1 bits 就可以
+
+# sum of two integers
+[link](https://leetcode.com/problems/sum-of-two-integers/)
+
+## intro
+不用 +/- 來做兩個 int 的相加
+
+## plan
+用 bits 的操作是最直覺的

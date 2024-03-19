@@ -104,3 +104,12 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
 
 ## plan
 簡單用 char2len map[rune]int 用兩個 forloop 就可以解
+
+# encode and decode string
+[link](https://leetcode.com/problems/encode-and-decode-strings)
+
+## intro
+實作 encode 跟 decode func, 能夠將一個 []str 轉成單一 string 再轉回同樣的 []str
+
+## plan
+直接看實作的解法

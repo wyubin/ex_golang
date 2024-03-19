@@ -25,3 +25,12 @@
 - while n != 0 中
     - 當 `n & 1 == 1` 代表 n 的最右邊是 1，所以 res++
     - n = n >> 1
+
+# counting bits
+[link](https://leetcode.com/problems/counting-bits/)
+
+## intro
+給一個 n int, 輸出 0 到 n 之間有多少 1 bits
+
+## plan
+產生 src []int 之後，用 for loop 計算每個 i 的 1 bits 就可以

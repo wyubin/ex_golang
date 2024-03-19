@@ -130,3 +130,12 @@ Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來�
 - 如果 rootVal > b, 則 繼續往 root.left 找
 - 如果 rootVal < a, 則 繼續往 root.right 找
 - return root
+
+# serialize and deserialize binary tree
+[link](https://leetcode.com/problems/serialize-and-deserialize-binary-tree/)
+
+## intro
+給一個 binary tree，輸出 serialize 的 string
+
+## plan
+應該是用BST 順序去輸出就可以, 可能可以基於 level order 去做

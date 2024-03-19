@@ -28,3 +28,14 @@
 ## plan
 藉由 DFS 確認是否有 cycle，沒有就回傳 true，有就回傳 false, 藉由 visitNodes 來確認是否所有 node 都被訪問過
 
+# number of connected components in an undirected graph
+[link](https://leetcode.com/problems/number-of-connected-components-in-an-undirected-graph)
+
+## intro
+給一個有向圖，node 數量為 n，還有 edges，回傳有幾個 connected component
+
+## plan
+init edges 並建立 visited map, 用dfs 去triverse graph, 每次 triverse 完如果還有 node 還沒 visited, 就可以 +1 繼續 triverse
+- def 的 stop 條件
+    - visited[node] == true 就直接return 不用 recursive
+    - 然後就針對 childs 做 dfs

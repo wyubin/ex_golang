@@ -351,3 +351,43 @@ twoSum(nums []int, target int) []int
     - 如果 i==runeCurr || !charOrder[i][runeCurr] 就 continue
     - 如果 visited[i] == true 就 false(看過但順序還沒寄？)
     - dfs(charOrder, i, visited, charSeq), 如果 dfs 回傳 true 就 可以寫接下去的順序
+
+# find median from data stream
+[leetcode link](https://leetcode.com/problems/find-median-from-data-stream)
+
+## intro
+試建立一個 class(MedianFinder), 有 AddNum 可持續增加int 到 []int, 有 FindMedian 可回傳 []int 中位數
+
+## plan
+- addNum 就是直接把 int 放進 []int
+- findMedian 然後是用 sort.Ints() 來排序，然後回傳 []int 中位數
+
+# longest increasing subsequence
+[leetcode link](https://leetcode.com/problems/longest-increasing-subsequence)
+
+## intro
+給一個 []int, 回傳最長的 increasing subsequence 的長度
+
+## plan
+直接用 dp(n) 去紀錄在 idx 的最長 increasing subsequence 的長度，然後用 max(dp) return
+
+# coin change
+[leetcode link](https://leetcode.com/problems/coin-change)
+
+## intro
+給一個硬幣面值 coins []int, 給一個 amount int, 回傳最少需要多少硬幣可以組成 amount
+
+## plan
+用 idxCoinAmountCount (dp) 去紀錄從 idxCoin 使用的話, 總額amount的組成硬幣數量的最小值 => minCoinCount(dp, coins, idxCoin, amount)
+- 以下幾種狀況為 stop
+  - 如果 amount == 0, return 0
+  - 如果 amount < 0, return math.MaxUint32
+  - 如果 idxCoin == 0, 則直接確認 amount % coins[0] == 0
+    - if true, return amount / coins[0]
+    - if false, return math.MaxUint32
+  - 如果 dp[idxCoin][amount] != 0, return dp[idxCoin][amount]
+- 開始計算 dp 值
+  - 如果不使用 idxCoin, nextCoinCount = minCoinCount(dp, coins, idxCoin-1, amount)
+  - 如果使用 idxCoin, currCoinCount = 1 + minCoinCount(dp, coins, idxCoin, amount-coins[idxCoin])
+  - dp[idxCoin][amount] = min(currCoinCount, nextCoinCount)
+- 最後 return dp[idxCoin][amount]

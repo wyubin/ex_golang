@@ -113,3 +113,14 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
 
 ## plan
 直接看實作的解法
+
+# longest Repeating character replacement
+[link](https://leetcode.com/problems/longest-repeating-character-replacement/)
+
+## intro
+給一個s都大寫的字串，還有一個k表示最多可以 replace 幾個 char, 求最長的同一字母的長度
+
+## plan
+- 是一個 window size 的問題，所以用雙指針 idxStart, idxEnd 來移動 windows, 每次移動 idxEnd 都要紀錄每個字母的 countChar, 並計算最大 maxRepeat
+- 當 (idxEnd-idxStart+1) - maxRepeat > k, 就要移動 idxStart 並紀錄 countChar
+- 然後 idxEnd++ 直到 == len

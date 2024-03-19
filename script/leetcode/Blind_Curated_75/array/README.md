@@ -401,3 +401,19 @@ twoSum(nums []int, target int) []int
 ## plan
 不用想得太複雜，其實就是 map -> pair -> sort
 
+# pacific Atlantic water flow
+[leetcode link](https://leetcode.com/problems/pacific-atlantic-water-flow)
+
+## intro
+給一個 island 的高度matrix [][]int, 回傳所有 pacific ocean(上跟左) 和 atlantic ocean(右跟下) 的 coordinate pair
+
+## plan
+需要init 2個 dp, 一個是可以水流到 pac 的 dp，一個是可以水流到 atl 的 dp，然後 dfs, pac/atl 都是本身的visited map, 另外要有一個 []pair 來紀錄可以同時連 pac 跟 atl 的 coordinate
+
+也是 dfs，只是這次會從海邊往裡面走
+- 可以上下左右走，需要限制在
+  - 下一格高度需要 >= 上一格高度
+  - 不能超過 matrix 的邊界
+- stop 條件
+  - 如果 visited 就直接 return
+- 如果 pac[i][j] && atl[i][j] 就 return

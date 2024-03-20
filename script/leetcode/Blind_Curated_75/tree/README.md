@@ -139,3 +139,21 @@ Trie 的介紹, 建立 Trie 物件及其相關功能，要有 insert 功能來�
 
 ## plan
 應該是用BST 順序去輸出就可以, 可能可以基於 level order 去做
+
+# subtree of another tree
+[link](https://leetcode.com/problems/subtree-of-another-tree/)
+
+## intro
+給一個 tree 和另一個 tree，判斷是否為 subtree
+```shell
+Input: root = [3,4,5,1,2], subRoot = [4,1,2]
+Output: true
+```
+
+## plan
+直接暴力解, 用兩層 recursive(findSubNode, isSameTree) 進行 retrieve
+- findSubNode(root, subRoot), 找 root 的 node value 跟 subRoot 的 node value 相同者，回傳 node
+- isSameTree(node, subRoot), 
+  - 當 node 為 nil 時，直接return node == subRoot
+  - 再來比較 value 是否相同
+  - 之後就可以看 leftnode 跟 rightnode 的 isSameTree

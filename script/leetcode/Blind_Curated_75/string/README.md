@@ -124,3 +124,24 @@ decode 可以是 string mapping 的方式，定義 A-Z 的 encode 是 1-26 的�
 - 是一個 window size 的問題，所以用雙指針 idxStart, idxEnd 來移動 windows, 每次移動 idxEnd 都要紀錄每個字母的 countChar, 並計算最大 maxRepeat
 - 當 (idxEnd-idxStart+1) - maxRepeat > k, 就要移動 idxStart 並紀錄 countChar
 - 然後 idxEnd++ 直到 == len
+
+# palindrome substring
+[link](https://leetcode.com/problems/palindromic-substrings)
+
+## intro
+給一串 string，輸出其中的所有 palindrome substring
+```shell
+Input: s = "aaa"
+Output: 6
+Explanation: Six palindromic strings: "a", "a", "a", "aa", "aa", "aaa".
+```
+
+
+## plan
+可以參考 Longest Palindromic Substring 的作法，以 windows scan 配合 dp 的方法來輸出每個window的 palindrome substring
+- init [][]bool(dp) 來存 j到i是否為 palindrome
+- 用 res []string 來紀錄所有的 palindrome substring
+- iter idxEnd 時，每一個對應的 char 都可以塞進 res
+    - iter idxStart 時，當 s[idxStart] == s[idxEnd] && (idxEnd-idxStart == 1 || dp[idxStart+1][idxEnd-1]) 代表是 palindrome
+        - s[idxStart:(idxEnd+1)]就塞進 res
+        - dp[idxStart][idxEnd] = true

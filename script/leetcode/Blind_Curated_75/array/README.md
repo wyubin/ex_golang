@@ -417,3 +417,16 @@ twoSum(nums []int, target int) []int
 - stop 條件
   - 如果 visited 就直接 return
 - 如果 pac[i][j] && atl[i][j] 就 return
+
+# non-overlap interval
+[leetcode link](https://leetcode.com/problems/non-overlapping-intervals)
+
+## intro
+給一個 interval array，若有重疊就移除，回傳最少需要移除的 interval 的數量
+
+## plan
+在 course schedule 那邊，是以 startIdx 進行排序再做計算，但這邊是希望可以移除最少的 interval, 所以以 append 順序來說，以 endIdx 來做排序會是最好的，才能塞入最多的interval
+- 先對 endIdx 進行排序
+- iter interval(from idx 1)
+  - 如果 endIdx[i-1] > startIdx[i], 就將 endIdx[i] = endIdx[i-1], 並且將 minRemoveCount++ (這樣就不會影響到下一個 idx 的比較)
+ 

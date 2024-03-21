@@ -16,6 +16,7 @@
 
 ## plan
 - 比較好的解法是用 DP 去解，也就是需要從最小範圍去紀錄是否為Palindromic 再往外延伸, 先預設 每個 i/j index 對應都 false, 如果為 Palindromic 就 true
+- sliding windows 中(idxEnd, idxStart)
     - 當 s[j] == s[i], then
         - i-j < 2(像是 `aa` or `aba`) 就直接 dp[i][j] = true
         - or dp[i-1][j+1] true(也就是內面那層確定是 Palindromic)，就 dp[i][j] = true 來延伸出去

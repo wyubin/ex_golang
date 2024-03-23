@@ -2,7 +2,7 @@ package main
 
 import "fmt"
 
-func posExtend(grid [][]string, idxRow, idxCol int, visitedPos map[string]struct{}) bool {
+func posExtend(grid [][]string, idxRow, idxCol int, visitedPos map[string]bool) bool {
 	if idxRow < 0 || idxRow >= len(grid) || idxCol < 0 || idxCol >= len(grid[0]) {
 		return false
 	}
@@ -11,11 +11,11 @@ func posExtend(grid [][]string, idxRow, idxCol int, visitedPos map[string]struct
 	}
 	strPos := fmt.Sprintf("%d_%d", idxRow, idxCol)
 	fmt.Printf("try %s\n", strPos)
-	if _, found := visitedPos[strPos]; found {
+	if visitedPos[strPos] {
 		return false
 	}
 	fmt.Printf("visit island with %s\n", strPos)
-	visitedPos[strPos] = struct{}{}
+	visitedPos[strPos] = true
 	// entend
 	posExtend(grid, idxRow-1, idxCol, visitedPos)
 	posExtend(grid, idxRow+1, idxCol, visitedPos)
@@ -26,7 +26,7 @@ func posExtend(grid [][]string, idxRow, idxCol int, visitedPos map[string]struct
 
 func solution(grid [][]string) int {
 	countIslands := 0
-	visitedPos := map[string]struct{}{}
+	visitedPos := map[string]bool{}
 	for i := 0; i < len(grid); i++ {
 		for j := 0; j < len(grid[0]); j++ {
 			if posExtend(grid, i, j, visitedPos) {

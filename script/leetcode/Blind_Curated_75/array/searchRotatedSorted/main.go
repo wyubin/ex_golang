@@ -1,35 +1,37 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
+// init idxStart, idxEnd
 func solution(nums []int, target int) int {
-	idxLow := 0
-	idxHigh := len(nums) - 1
-	for idxLow <= idxHigh {
-		idxMid := (idxLow + idxHigh) / 2
-		if nums[idxMid] == target {
+	idxStart, idxEnd := 0, len(nums)-1
+	for idxStart <= idxEnd {
+		idxMid := (idxStart + idxEnd) / 2
+		valMid := nums[idxMid]
+		if valMid == target {
 			return idxMid
 		}
-		if nums[idxLow] <= nums[idxMid] {
-			if nums[idxLow] <= target && target < nums[idxMid] {
-				idxHigh = idxMid - 1
+		valStart, valEnd := nums[idxStart], nums[idxEnd]
+		if valEnd > valMid {
+			if target > valMid && target < valEnd {
+				idxStart = idxMid + 1
 			} else {
-				idxLow = idxMid + 1
+				idxEnd = idxMid - 1
 			}
 		} else {
-			if nums[idxMid] < target && target <= nums[idxHigh] {
-				idxLow = idxMid + 1
+			if target < valMid && target >= valStart {
+				idxEnd = idxMid - 1
 			} else {
-				idxHigh = idxMid - 1
+				idxStart = idxMid + 1
 			}
 		}
 	}
 	return -1
 }
-
 func main() {
-	nums := []int{4, 5, 6, 7, 0, 1, 2}
-	target := 3
-	k := solution(nums, target)
-	fmt.Printf("k:%+v\n", k)
+	s := []int{4, 5, 6, 7, 0, 1, 2}
+	k := solution(s, 0)
+	fmt.Printf("k: %+v\n", k)
 }

@@ -1,6 +1,8 @@
 # twoSum
 [link](https://leetcode.com/problems/two-sum/description/)
 ```golang
+Input: nums = [2,7,11,15], target = 9
+Output: [0,1]
 twoSum(nums []int, target int) []int
 ```
 - 輸入一個整數的 array 及目標整數，輸出其中兩個整數加起來值為目標整數的 index，不然就輸出空array
@@ -13,6 +15,10 @@ twoSum(nums []int, target int) []int
 
 ## intro
 輸入 []int array為多個牆面的高度，每個牆的距離為 1，任選兩面牆為 boundary 來算面積，輸出最大面積
+```shell
+Input: height = [1,8,6,2,5,4,8,3,7]
+Output: 49
+```
 
 ## plan
 ### try
@@ -20,19 +26,28 @@ twoSum(nums []int, target int) []int
 - 這個解法有兩個 for loop...
 
 ### solution
-要直接從最大寬度開始確認，直接設定兩邊 pointer，然後往中間移動，確認面積，如果面積比目前最大面積還大，就更新最大面積。
-另外在往內移動兩邊 pointer 的條件是只移動高度低的，因為只有提高高度低的才可能增加面積，因為 boundary 的最小值才能形成面積，
+- idxStart, idxEnd, 但在 sliding 時僅從比較小的值去 sliding, 就可以確保 sliding 方向正確，所以只需要一次 sliding
+
+- 要直接從最大寬度開始確認，直接設定兩邊 pointer，然後往中間移動，確認面積，如果面積比目前最大面積還大，就更新最大面積。
+- 另外在往內移動兩邊 pointer 的條件是只移動高度低的，因為只有提高高度低的才可能增加面積，因為 boundary 的最小值才能形成面積，
 
 # 3sum
 [link](https://leetcode.com/problems/3sum/)
 
 ## intro
-輸入一個 []int, 確認有沒有三數相加為 0, int 可以重複
+輸入一個 []int, 確認有沒有三數相加為 0
+```shell
+Input: nums = [-1,0,1,2,-1,-4]
+Output: [[-1,-1,2],[-1,0,1]]
+```
 
 ## plan
 ### think
 暴力法就是把 3sum 當作有參數的 2sum 去處理，但是時間複雜度會比 2sum 要慢很多
 但 twosum 是不重複，但 3sum 是可以有重複 item 的，所以無法用 2sum 去解
+
+### think2
+先對 num 進行 sort, 就可以 for loop 針對每個數來做 2sum，但因為是可重複的，所以要改成 two pointer 的方式，當 sum > 0，要減少 idxEnd，當 sum < 0，要增加 idxStart
 
 ### solution
 - 因為複雜度比2sum 高很多，基本上只能兩個 loop
@@ -45,8 +60,13 @@ twoSum(nums []int, target int) []int
 ## intro
 輸入由一個從小到大排序的 array with possibly rotated at an unknown pivot index(ex [4,5,6,7,0,1,2])，輸入 target，輸出 target 在 array 中的 index，沒有則輸出 -1
 
+```shell
+Input: nums = [4,5,6,7,0,1,2], target = 0
+Output: 4
+```
+
 ## plan
-- 以 low, high 兩個 idx 去做 binary search(不斷用 mid 去確認是不是 target)
+- 以 low, high 兩個 idx 去做 binary search(不斷用 mid 去確認是不是 target), for idxStart <= idxEnd
 - 此數列的型態會至少有一邊是遞增的，特性是 left <= right
     - 如果 low 半邊是遞增的
         - 確認 target 在 low 跟 mid 之間的話 -> high = mid -1 else low = mid + 1
@@ -55,6 +75,10 @@ twoSum(nums []int, target int) []int
 
 # Combination Sum
 [link](https://leetcode.com/problems/combination-sum/)
+```shell
+Input: candidates = [2,3,6,7], target = 7
+Output: [[2,2,3],[7]]
+```
 
 ## intro
 會給一個 cadidates []int, 設定一個target int, 找出可能的組合其和為 target，返回所有可能的組合

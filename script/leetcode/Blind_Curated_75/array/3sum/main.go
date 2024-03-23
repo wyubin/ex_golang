@@ -25,12 +25,6 @@ func threeSum(nums []int) [][]int {
 				}
 				j++
 				k--
-				for j < k && numsSorted[j] == numsSorted[j-1] {
-					j++
-				}
-				for j < k && numsSorted[k] == numsSorted[k+1] {
-					k--
-				}
 			} else if sum > 0 {
 				k--
 			} else {

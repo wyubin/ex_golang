@@ -4,15 +4,20 @@ import (
 	"fmt"
 )
 
-func rotate(matrix [][]int) {
-	for i := 0; i < len(matrix); i++ {
-		for j := i; j < len(matrix[i]); j++ {
-			matrix[i][j], matrix[j][i] = matrix[j][i], matrix[i][j]
+func rotate(mat [][]int) {
+	// transpose
+	for i := 0; i < len(mat); i++ {
+		for j := i + 1; j < len(mat[0]); j++ {
+			mat[i][j], mat[j][i] = mat[j][i], mat[i][j]
 		}
 	}
-	for i := 0; i < len(matrix); i++ {
-		for j := 0; j < len(matrix[i])/2; j++ {
-			matrix[i][j], matrix[i][len(matrix[i])-j-1] = matrix[i][len(matrix[i])-j-1], matrix[i][j]
+	// col swap
+	for j := 0; j < len(mat); j++ {
+		idxStart, idxEnd := 0, len(mat[0])-1
+		for idxStart < idxEnd {
+			mat[j][idxStart], mat[j][idxEnd] = mat[j][idxEnd], mat[j][idxStart]
+			idxStart++
+			idxEnd--
 		}
 	}
 }

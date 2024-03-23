@@ -88,7 +88,7 @@ Output: [[2,2,3],[7]]
 主要是因為這算是多重組合，而且是可重複的組合，因此 recursive 可以有效把時間複雜度減低
 
 ### solution
-- 主程式 checkCombination(arrCandidates []int, currCombination *[]int, remind_target int, idxStart int, result *[][]int)
+- recursive 主程式 checkCombination(arrCandidates []int, currCombination *[]int, remind_target int, idxStart int, result *[][]int)
   - 在內部先檢查目前輸入是不是已達reminder == 0
     - 如果是，就把目前組合加入結果中
     - 如果 reminder < 0 => 要將目前組合 pop() 並 return
@@ -99,20 +99,30 @@ Output: [[2,2,3],[7]]
 
 # intro
 將一個提供的 2d 矩陣做 往右 rotate
+```shell
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [[7,4,1],[8,5,2],[9,6,3]]
+```
 
 # plan
 經過觀察及大部分的方法都是
 - 先將 2d 矩陣 transpose
+  - for loop (上三角跟下三角互換) 做 swap
 - 再將 2d 矩陣左右翻轉(column swap)
+  - 
 
 # Maximum Subarray
 [link](https://leetcode.com/problems/maximum-subarray/)
 
 # intro
 輸入一個 []int，輸出最大 subarray 的總和
+```shell
+Input: nums = [-2,1,-3,4,-1,2,1,-5,4]
+Output: 6
+```
 
 # plan
-概念是連續加總，
+概念是連續加總, 用單個 for loop就可以
 - 需要一個 pointer 去紀錄最大加總, 另一個 pointer 紀錄 subarray 加總
 - 當subarray 的加總 < 0 時，代表這個subarray 已經無法讓後續的加總更大，就需要從這邊斷尾，將 sumSubarr 回歸為 0，並往前移動 point
 
@@ -121,6 +131,10 @@ Output: [[2,2,3],[7]]
 
 # intro
 將一個 2d 矩陣轉為 spiral matrix  的 1d array
+```shell
+Input: matrix = [[1,2,3],[4,5,6],[7,8,9]]
+Output: [1,2,3,6,9,8,7,4,5]
+```
 
 # plan
 - 可以單純用走的路徑去 append int, 只是要注意，每次的方向要轉彎時， boundary 就要內縮 1
@@ -135,6 +149,12 @@ Output: [[2,2,3],[7]]
 
 ## intro
 輸入一個 []int，每個數字代表可以往前進的距離，確認是否能夠到達最後一個 index，如果能到達則輸出 true，否則輸出 false
+```shell
+Input: nums = [2,3,1,1,4]
+Output: true
+Input: nums = [3,2,1,0,4]
+Output: false
+```
 
 ## plan
 有點像是 骨牌遊戲或是加油策略，只是這問題是一直線的，而不是多線
@@ -149,6 +169,14 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個含有 start, end []int 的 array, 輸出最後可合併完成的 [][]int
+```shell
+Input: intervals = [[1,3],[2,6],[8,10],[15,18]]
+Output: [[1,6],[8,10],[15,18]
+
+Input: intervals = [[1,4],[4,5]]
+Output: [[1,5]]
+```
+
 
 ## plan
 主要概念是先排序過後，後面的 interval 基本上頂多就跟前一個 overlap, 或是沒 overlap
@@ -163,7 +191,13 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個 沒有overlap 的 interval array，輸入一個 interval，輸出插入後的 interval array，並且要維持沒有 overlap 的狀態
+```shell
+Input: intervals = [[1,3],[6,9]], newInterval = [2,5]
+Output: [[1,5],[6,9]]
 
+Input: intervals = [[1,2],[3,5],[6,7],[8,10],[12,16]], newInterval = [4,8]
+Output: [[1,2],[3,10],[12,16]]
+```
 ## plan
 可以 follow merge intervals 的概念，先把 insert interval 丟進去，再 sort 一次，再 iter 確認overlap, 但就是 O(NlogN)
 
@@ -175,6 +209,11 @@ Output: [[2,2,3],[7]]
 
 ## intro
 基本上這類有連續效應的計算，通常會藉由 DP 來紀錄已經計算過得結果，而且，通常也都會用 recursive 來做 subjob 的 implement
+```shell
+Input: m = 3, n = 7
+Output: 28
+```
+
 
 ## plan
 - 需要設定 dp, 是紀錄每一格到終點的可能路線
@@ -188,6 +227,10 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個距離 int, 每次只能走一步或兩步，計算可以剛好走完的步數組合
+```shell
+Input: n = 3
+Output: 3
+```
 
 ## plan
 因為有兩種步伐長度，而又是累積效應，所以一樣可以用dp 去做
@@ -199,6 +242,10 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個矩陣，0 的值，對應的整個 column 跟 整個 row 都要是 0
+```shell
+Input: matrix = [[1,1,1],[1,0,1],[1,1,1]]
+Output: [[1,0,1],[0,0,0],[1,0,1]]
+```
 
 ## plan
 - 一次 for loop 依序去改看起來無法，應該是一次 iter 標記需要 column & row index 再第二次 for loop 去改
@@ -208,6 +255,10 @@ Output: [[2,2,3],[7]]
 
 # intro
 基於一個提供的 char matrix, input string 並從 matrix 中確認是否能找到連續字串，找到就回傳 true，沒有則回傳 false
+```shell
+Input: board = [["A","B","C","E"],["S","F","C","S"],["A","D","E","E"]], word = "ABCCED"
+Output: true
+```
 
 # plan
 算是從一個 entry point 後，開始從四周開始找node 的方式，很像 dfs, 一樣也是用 recursive 去實做
@@ -236,20 +287,27 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個[]int, 計算最大利潤
+```shell
+Input: prices = [7,1,5,3,6,4]
+Output: 5
+```
 
 ## plan
 - 用 buyIdx/sellIdx 兩個 point 紀錄買進買出的點, init 0
 - 用maxProfit 紀錄最大利潤
 - iter sellIdx
   - 如果 price[sellIdx] > price[buyIdx], 就更新maxProfix
-  - 否則(虧錢)，就把 buyIdx 設為 sellIdx，再把 sellIdx + 1
+  - 否則(虧錢)，就把 buyIdx 設為 sellIdx(reset)，再把 sellIdx + 1
 
 # longest consequtive sequences
 [leetcode link](https://leetcode.com/problems/longest-consecutive-sequence)
 
 ## intro
 給一個 []int, 計算最長連續數字
-
+```shell
+Input: nums = [100,4,200,1,3,2]
+Output: 4
+```
 ## plan
 先用 map 紀錄item使用狀況，並用 pre/next 來 extend 每次的 seed 直到不連續
 - 先用一個 map[int]bool(num2left) 去紀錄已經用過的數字，先都填 true
@@ -266,7 +324,11 @@ Output: [[2,2,3],[7]]
 [leetcode link](https://leetcode.com/problems/maximum-product-subarray)
 
 ## intro
-給一個[]int, 計算最大乘積
+給一個[]int, 計算subarray的最大乘積
+```shell
+Input: nums = [2,3,-2,4]
+Output: 6
+```
 
 ## plan
 需要考慮的跟 max sum 不同, 因為都是整數，只是可能有負數，或是遇到 0 就要 reset(prevProd=1)再繼續。 另外連乘有正負號因此會有方向性，分別從正向跟順向去找 maxProduct 應該就可以了
@@ -276,6 +338,10 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個 rotated Sorted []int, 計算最小值
+```shell
+Input: nums = [3,4,5,1,2]
+Output: 1
+```
 
 ## plan
 一樣用 `Search in Rotated Sorted Array` 的概念，用 binary search, 
@@ -290,6 +356,10 @@ Output: [[2,2,3],[7]]
 
 ## intro
 給一個[]int, 是每個家庭所擁有的金錢, 賊不能一晚連續偷兩家，試問一晚最多能偷多少錢
+```shell
+Input: nums = [1,2,3,1]
+Output: 4
+```
 
 ## plan
 - 又是堆疊問題，可以用 dp 暫存偷到第幾家時，拿到到最多錢
@@ -306,6 +376,15 @@ Output: [[2,2,3],[7]]
 
 ## intro
 搜尋方法跟 word search 很像，只是要有一個 map 紀錄已經看過的點(x_y set), for loop 如果是 1 又沒看過就又進到 recursive 去 extend 看過的點 並 island++, 不然就 continue
+```shell
+Input: grid = [
+  ["1","1","1","1","0"],
+  ["1","1","0","1","0"],
+  ["1","1","0","0","0"],
+  ["0","0","0","0","0"]
+]
+Output: 1
+```
 
 ## plan
 

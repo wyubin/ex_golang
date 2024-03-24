@@ -2,15 +2,7 @@ package main
 
 import "fmt"
 
-func (s *TreeNode) String() string {
-	if s == nil {
-		return "->nil"
-	}
-	return fmt.Sprintf("->%d%s%s", s.Val, s.Left.String(), s.Right.String())
-}
-
 func buildSubtree(preorder []int, inorder2idx map[int]int, rootIdx, idxLast, inorderStart, inorderEnd int) *TreeNode {
-	fmt.Printf("currIdx:%d, inorderStart:%d, inorderEnd:%d\n", rootIdx, inorderStart, inorderEnd)
 	if inorderStart > inorderEnd || rootIdx > idxLast {
 		return nil
 	}
@@ -20,6 +12,7 @@ func buildSubtree(preorder []int, inorder2idx map[int]int, rootIdx, idxLast, ino
 	// left and right build
 	midIdx := inorder2idx[root.Val]
 	lenLeft := midIdx - inorderStart
+	fmt.Printf("currIdx:%d, inorderStart:%d, inorderEnd:%d, midIdx: %d, lenLeft: %d\n", rootIdx, inorderStart, inorderEnd, midIdx, lenLeft)
 	root.Left = buildSubtree(preorder, inorder2idx, rootIdx+1, rootIdx+lenLeft, inorderStart, midIdx-1)
 	root.Right = buildSubtree(preorder, inorder2idx, rootIdx+lenLeft+1, idxLast, midIdx+1, inorderEnd)
 	return root

@@ -1,31 +1,28 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"slices"
+)
 
-func lengthOfLongestSubstring(s string) int {
-	idxLeft := 0
-	maxLength := 0
-	currLength := 0
-	char2Idx := map[rune]int{}
-
-	for idxRight, currByte := range s {
-		lastIdx, found := char2Idx[currByte]
-		// if found repeat and lastIdx >= idxLeft(must in the range of idxLeft and idxRight)
-		if found && lastIdx >= idxLeft {
-			idxLeft = lastIdx + 1
+func solution(inStr string) int {
+	maxLen := 0
+	char2idx := map[rune]int{}
+	idxStart := 0
+	for idxCurr, currRune := range inStr {
+		preIdx, found := char2idx[currRune]
+		if found {
+			idxStart = preIdx + 1
 		} else {
-			currLength = idxRight - idxLeft + 1
-			if maxLength < currLength {
-				maxLength = currLength
-			}
+			maxLen = slices.Max([]int{maxLen, idxCurr - idxStart + 1})
 		}
-		char2Idx[currByte] = idxRight
+		char2idx[currRune] = idxCurr
 	}
-	return maxLength
+	return maxLen
 }
 
 func main() {
 	s := "abcabcbb"
-	k := lengthOfLongestSubstring(s)
+	k := solution(s)
 	fmt.Printf("k:%+v\n", k)
 }

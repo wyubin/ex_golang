@@ -4,6 +4,11 @@
 ## intro
 給定一串 int 並轉成 Binay tree 並確認其是否為 valid BST, 若是則回傳 true，否則回傳 false
 BST: left < root < right
+```shell
+Input: root = [2,1,3]
+Output: true
+```
+
 
 ## plan
 - 建立一個 recursive func 確認 node 是否在一個 int 範圍內
@@ -31,6 +36,11 @@ BST: left < root < right
 
 ## intro
 給一個 tree，輸出其 level order 的結果
+```shell
+Input: root = [3,9,20,null,null,15,7]
+Output: [[3],[9,20],[15,7]]
+```
+
 
 ## plan
 - 看起來一樣是操作，用一個 array 來 append 每次的 level 的 node values，然後把 array 輸出
@@ -40,6 +50,10 @@ BST: left < root < right
 
 ## intro
 給一個 tree，輸出其 depth
+```shell
+Input: root = [3,9,20,null,null,15,7]
+Output: 3
+```
 
 ## plan
 - recursive func(maxDepth), 輸入 tree 的 node，並把 node 的 depth 輸出
@@ -52,6 +66,10 @@ BST: left < root < right
 
 ## intro
 給一個 preorder 和 inorder，輸出一個 tree
+```shell
+Input: preorder = [3,9,20,15,7], inorder = [9,3,15,20,7]
+Output: [3,9,20,null,null,15,7]
+```
 
 ## plan
 - preorder: root -> left -> right
@@ -64,6 +82,10 @@ BST: left < root < right
 
 ## intro
 給一個 BST, 從裡面找出最大的 path sum， path 就是一個不重複走的線
+```shell
+Input: root = [-10,9,20,null,null,15,7]
+Output: 42
+```
 
 ## plan
 - 一樣會是一個 recursive func(maxGain), 計算以這個 node 為 root 的 maxSum

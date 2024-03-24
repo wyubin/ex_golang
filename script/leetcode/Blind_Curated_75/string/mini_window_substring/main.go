@@ -2,39 +2,43 @@ package main
 
 import "fmt"
 
-func solution(s, t string) string {
+func solution(srcStr, trgStr string) string {
+	// init ref data
+	countNeed := 0
 	byte2count := map[byte]int{}
-	count := 0
-	for _, char := range t {
+	for _, char := range trgStr {
+		countNeed++
 		byte2count[byte(char)]++
-		count++
 	}
-	start, end := 0, 0
-	minLen, start_idx := len(s)+1, 0
-	for end < len(s) {
-		_, found := byte2count[s[end]]
+	// init pointer
+	minLen, minStart := len(srcStr)+1, 0
+	idxStart, idxEnd := 0, 0
+	for idxEnd < len(srcStr) {
+		byteEnd := srcStr[idxEnd]
+		_, found := byte2count[byteEnd]
 		if found {
-			byte2count[s[end]]--
-			count--
+			byte2count[byteEnd]--
+			countNeed--
 		}
-		end++
-
-		// move start
-		for count == 0 {
-			if end-start < minLen {
-				minLen = end - start
-				start_idx = start
+		idxEnd++
+		// if countNeed == 0
+		for countNeed == 0 {
+			currLen := idxEnd - idxStart
+			if currLen < minLen {
+				minLen = currLen
+				minStart = idxStart
 			}
-			_, found := byte2count[s[start]]
+			byteStart := srcStr[idxStart]
+			_, found := byte2count[byteStart]
 			if found {
-				byte2count[s[start]]++
-				count++
+				byte2count[byteStart]++
+				countNeed++
 			}
-			start++
+			idxStart++
 		}
 	}
-	if minLen < len(s)+1 {
-		return s[start_idx : start_idx+minLen]
+	if minLen < len(srcStr)+1 {
+		return srcStr[minStart : minStart+minLen]
 	}
 	return ""
 }

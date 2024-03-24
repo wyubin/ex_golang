@@ -5,27 +5,27 @@ import (
 	"slices"
 )
 
-func solution(inStr string, lenWild int) int {
-	countChar := make([]int, 26)
-	maxRepeat := 0
-	resLen := 0
-	idxStart, idxEnd := 0, 0
-	var intStart, intEnd int
-	// move window
-	for idxEnd < len(inStr) {
-		intEnd = int(rune(inStr[idxEnd] - 'A'))
-		countChar[intEnd]++
-		maxRepeat = slices.Max([]int{maxRepeat, countChar[intEnd]})
-		if idxEnd-idxStart+1-maxRepeat > lenWild {
-			intStart = int(rune(inStr[idxStart] - 'A'))
-			countChar[intStart]--
-			idxStart++
-		}
-		// record total len
-		resLen = slices.Max([]int{resLen, idxEnd - idxStart + 1})
+func solution(srcStr string, chTime int) int {
+	// init char2Count
+	char2Count := make([]int, 26)
+	idxStart, idxEnd := 0, 1
+	maxRepeat, currRepeat := 0, 0
+	for idxEnd < len(srcStr) {
+		charEnd := int(rune(srcStr[idxEnd]) - 'A')
+		char2Count[charEnd]++
+		currRepeat = slices.Max(char2Count)
+		currLen := idxEnd - idxStart + 1
 		idxEnd++
+		if currLen-currRepeat <= chTime {
+			maxRepeat = slices.Max([]int{maxRepeat, currLen})
+			continue
+		}
+		// move idxStart
+		charStart := int(rune(srcStr[idxStart]) - 'A')
+		char2Count[charStart]--
+		idxStart++
 	}
-	return resLen
+	return maxRepeat
 }
 
 func main() {

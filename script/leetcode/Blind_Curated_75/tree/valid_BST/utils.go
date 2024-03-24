@@ -24,8 +24,11 @@ func createTree(nums []int) *TreeNode {
 			tree.Left.Val = nums[i]
 			ch <- tree.Left
 		}
+		if i == len(nums) {
+			break
+		}
 		i++
-		if i == len(nums) || nums[i] == -1 {
+		if nums[i] == -1 {
 			tree.Right = nil
 		} else {
 			tree.Right = new(TreeNode)

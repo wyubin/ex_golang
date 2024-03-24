@@ -5,30 +5,34 @@ import (
 	"slices"
 )
 
-func wordBreak(s string, wordDict []string) bool {
-	dp := make([]bool, len(s)+1)
+func solution(srcStr string, words []string) bool {
+	// init breakpoint
+	dp := make([]bool, len(srcStr)+1)
 	dp[0] = true
-	maxWord := 0
-	wordMap := map[string]bool{}
-	for _, word := range wordDict {
-		wordMap[word] = true
-		if len(word) > maxWord {
-			maxWord = len(word)
+	maxWordLen := 0
+	for _, word := range words {
+		currLen := len(word)
+		if maxWordLen < currLen {
+			maxWordLen = currLen
 		}
 	}
-	for i := 1; i <= len(s); i++ {
-		for j := i - 1; j >= slices.Max([]int{i - 1 - maxWord, 0}); j-- {
-			if dp[j] && wordMap[s[j:i]] {
-				dp[i] = true
+
+	for idxEnd := 1; idxEnd <= len(srcStr); idxEnd++ {
+		maxStart := slices.Max([]int{0, idxEnd - maxWordLen})
+		// check dp[idxEnd] can be true
+		for idxStart := idxEnd - 1; idxStart >= maxStart; idxStart-- {
+			if dp[idxStart] && slices.Contains(words, srcStr[idxStart:idxEnd]) {
+				dp[idxEnd] = true
+				break
 			}
 		}
 	}
-	return dp[len(s)]
+	return dp[len(srcStr)]
 }
 
 func main() {
 	s := "catsandog"
 	wordDict := []string{"cats", "dog", "sand", "and", "cat"}
-	k := wordBreak(s, wordDict)
+	k := solution(s, wordDict)
 	fmt.Printf("k:%+v\n", k)
 }

@@ -2,36 +2,7 @@ package main
 
 import "fmt"
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
-func (s *ListNode) String() string {
-	strContent := ""
-	visited := map[*ListNode]bool{}
-	for node := s; node != nil && !visited[node]; node = node.Next {
-		if strContent != "" {
-			strContent += ","
-		}
-		strContent += fmt.Sprintf("%d", node.Val)
-		visited[node] = true
-	}
-	return fmt.Sprintf("[%s]", strContent)
-}
-
-func slice2ListNode(nums []int) *ListNode {
-	head := &ListNode{}
-	curr := head
-	for _, val := range nums {
-		curr.Next = &ListNode{Val: val}
-		curr = curr.Next
-	}
-	return head.Next
-}
-
 func removeNthFromEnd(head *ListNode, n int) *ListNode {
-	dummy := &ListNode{Next: head}
 	nodeLen := 0
 	node := head
 	for node != nil {
@@ -52,13 +23,13 @@ func removeNthFromEnd(head *ListNode, n int) *ListNode {
 		currIdx++
 		node = node.Next
 	}
-	return dummy.Next
+	return head
 }
 
 func main() {
 	nums := []int{1, 2, 3, 4, 5}
 	n := 2
-	head := slice2ListNode(nums)
+	head := slice2ListNode(nums, -1)
 	fmt.Printf("head:%s\n", head)
 	k := removeNthFromEnd(head, n)
 	fmt.Printf("k:%s\n", k)

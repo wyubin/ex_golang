@@ -7,6 +7,7 @@
 ## plan
 基本上只是用這個題目來了解 linked list 的基本操作
 ### solution
+- 先算 nodeLen, 就可以知道 idxJump := nodeLen - n - 1
 - 先計算要在第幾個 node 把 next.next 接到 next
 - 然後就是另一個 loop, 來 triverse 到第幾個 node 來做事
 
@@ -15,7 +16,10 @@
 
 # intro
 有兩個 sorted linked list，輸出合併後的 linked list
-
+```shell
+Input: list1 = [1,2,4], list2 = [1,3,4]
+Output: [1,1,2,3,4,4]
+```
 ## plan
 ### solution
 一樣是利用 linked list 的 Next 特性 比較 val 後把較小的 node 接到 current node 的 next 然後往前移動
@@ -40,6 +44,10 @@
 
 ## intro
 輸入一個 linked list，順序換成 n1->n5->n2->n4->n3 輸出新的 linked list
+```shell
+Input: head = [1,2,3,4,5]
+Output: [1,5,2,4,3]
+```
 
 ## plan
 概念是用兩個 pointer 把 list([1,2,3,4,5]) 拆成前半([1,2,3])跟後半([4,5]), 把後半做 reverse, 然後在一個個合併，這邊會用到許多 linked list 的 operation

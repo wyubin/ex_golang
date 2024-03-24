@@ -12,7 +12,10 @@ func solution(bs string) string {
 	}
 	bsInt32 := uint32(bsInt64)
 	res := uint32(0)
-	for i := 0; i < 32 && bsInt32 != 0; i++ {
+	for i := 0; i < 32; i++ {
+		if bsInt32 == 0 {
+			break
+		}
 		currBit := bsInt32 & 1
 		revBit := currBit << (31 - i)
 		res = res | revBit

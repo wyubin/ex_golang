@@ -5,9 +5,13 @@ import "fmt"
 func reorder(list *ListNode) *ListNode {
 	// split list
 	fastNode, slowNode := list, list
-	for fastNode.Next != nil && fastNode.Next.Next != nil {
-		fastNode = fastNode.Next.Next
-		slowNode = slowNode.Next
+	isSlowRun := false
+	for fastNode.Next != nil {
+		fastNode = fastNode.Next
+		if isSlowRun {
+			slowNode = slowNode.Next
+		}
+		isSlowRun = !isSlowRun
 	}
 
 	// reverse secode list

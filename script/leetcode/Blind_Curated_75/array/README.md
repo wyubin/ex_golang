@@ -394,7 +394,10 @@ Output: 1
 
 ## intro
 給定一個有向圖，如果能完成所有課程，回傳 true，否則回傳 false
-
+```shell
+Input: numCourses = 2, prerequisites = [[1,0]]
+Output: true
+```
 ## plan
 ### 概念
 - 可以用 prer2course 來紀錄需要先修的課程，同時用 indegree 來記錄每個課程需要多少課程先修, 先從沒有 indegree 的課程開始來檢查, ，visited node 都在 indegree 減一, 如果 node indegree 為 0，就把它加入 queue，直到 queue 為空
@@ -406,6 +409,10 @@ Output: 1
 
 ## intro
 給一個 src []int, return 一個 []int為 src[i] 以外的其他數字的 product
+```shell
+Input: nums = [1,2,3,4]
+Output: [24,12,8,6]
+```
 
 ## plan
 最佳化的方法很簡單，先 init prefix 跟 suffix 兩個 []int,
@@ -433,6 +440,10 @@ Output: 1
 
 ## intro
 給一個 []int, 長度為 n, 包含 0 到 n，回傳缺少的數字
+```shell
+Input: nums = [9,6,4,2,3,5,7,0,1]
+Output: 8
+```
 
 ## plan
 - 直接 sort 再iter 確認 n[idx] == idx, 如果是就回傳 idx
@@ -445,6 +456,10 @@ Output: 1
 
 ## intro
 給一個 []string, 按照字典序排列，回傳最短字典序的排列
+```shell
+Input: words = ["wrt","wrf","er","ett","rftt"]
+Output: "wertf"
+```
 
 ## plan
 - 用一個 charOrder 26*26 的 [][]bool 來紀錄每個字母前一個字母是否有相連的線，用 iter words 兩兩相比，只要有 char 不同，就可以記錄 charOrder[char1][char2] = true，然後break 看下一對，就可以建立 graph
@@ -470,6 +485,10 @@ Output: 1
 
 ## intro
 給一個 []int, 回傳最長的 increasing subsequence 的長度
+```shell
+Input: nums = [10,9,2,5,3,7,101,18]
+Output: 4
+```
 
 ## plan
 直接用 dp(n) 去紀錄在 idx 的最長 increasing subsequence 的長度，然後用 max(dp) return
@@ -479,6 +498,11 @@ Output: 1
 
 ## intro
 給一個硬幣面值 coins []int, 給一個 amount int, 回傳最少需要多少硬幣可以組成 amount
+```shell
+Input: coins = [1, 2, 5], amount = 11
+Output: 3
+```
+
 
 ## plan
 用 idxCoinAmountCount (dp) 去紀錄從 idxCoin 使用的話, 總額amount的組成硬幣數量的最小值 => minCoinCount(dp, coins, idxCoin, amount)
@@ -509,6 +533,11 @@ Output: 1
 
 ## intro
 給一個 island 的高度matrix [][]int, 回傳所有 pacific ocean(上跟左) 和 atlantic ocean(右跟下) 的 coordinate pair
+```shell
+Input: heights = [[1,2,2,3,5],[3,2,3,4,4],[2,4,5,3,1],[6,7,1,4,5],[5,1,1,2,4]]
+Output: [[0,4],[1,3],[1,4],[2,2],[3,0],[3,1],[4,0]]
+```
+
 
 ## plan
 需要init 2個 dp, 一個是可以水流到 pac 的 dp，一個是可以水流到 atl 的 dp，然後 dfs, pac/atl 都是本身的visited map, 另外要有一個 []pair 來紀錄可以同時連 pac 跟 atl 的 coordinate
@@ -526,6 +555,10 @@ Output: 1
 
 ## intro
 給一個 interval array，若有重疊就移除，回傳最少需要移除的 interval 的數量
+```shell
+Input: intervals = [[1,2],[2,3],[3,4],[1,3]]
+Output: 1 
+```
 
 ## plan
 在 course schedule 那邊，是以 startIdx 進行排序再做計算，但這邊是希望可以移除最少的 interval, 所以以 append 順序來說，以 endIdx 來做排序會是最好的，才能塞入最多的interval

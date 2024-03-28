@@ -7,14 +7,16 @@ import (
 )
 
 func dfs(board [][]string, chars []string, i, j, k int, paths *[]string) bool {
-	currPath := fmt.Sprintf("%d_%d", i, j)
-	if k == len(chars)-1 {
+	if k == len(chars) {
 		return true
+	}
+	currPath := fmt.Sprintf("%d_%d", i, j)
+	if slices.Index(*paths, currPath) != -1 {
+		return false
 	}
 	if i < 0 || i >= len(board) ||
 		j < 0 || j >= len(board[i]) ||
-		board[i][j] != chars[k] ||
-		slices.Index(*paths, currPath) != -1 {
+		board[i][j] != chars[k] {
 		return false
 	}
 	*paths = append(*paths, currPath)

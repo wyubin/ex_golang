@@ -4,7 +4,7 @@ import "fmt"
 
 func combinationSum(candidates []int, target int) [][]int {
 	res := [][]int{}
-	checkCombination(candidates, target, 0, []int{}, &res)
+	checkCombination(candidates, target, len(candidates)-1, []int{}, &res)
 	return res
 }
 
@@ -16,7 +16,7 @@ func checkCombination(candidates []int, target int, start int, combination []int
 		*res = append(*res, combination)
 		return
 	}
-	for i := start; i < len(candidates); i++ {
+	for i := start; i >= 0; i-- {
 		checkCombination(candidates, target-candidates[i], i, append(combination, candidates[i]), res)
 	}
 }

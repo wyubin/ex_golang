@@ -2,18 +2,15 @@ package main
 
 import "fmt"
 
-func dumpPaths(m int, n int, i int, j int, dp [][]int) int {
-	if i >= m || j >= n {
+func dumpPaths(dp [][]int, i, j int) int {
+	if i < 0 || j < 0 {
 		return 0
 	}
-	if i == m-1 && j == n-1 {
-		// to the end
-		return 1
+	paths := dp[i][j]
+	if paths != 0 {
+		return paths
 	}
-	if dp[i][j] != 0 {
-		return dp[i][j]
-	}
-	dp[i][j] = dumpPaths(m, n, i+1, j, dp) + dumpPaths(m, n, i, j+1, dp)
+	dp[i][j] = dumpPaths(dp, i-1, j) + dumpPaths(dp, i, j-1)
 	return dp[i][j]
 }
 
@@ -23,8 +20,9 @@ func uniquePaths(m int, n int) int {
 	for i := 0; i < m; i++ {
 		dp[i] = make([]int, n)
 	}
+	dp[0][0] = 1
 	// dumpPaths
-	res := dumpPaths(m, n, 0, 0, dp)
+	res := dumpPaths(dp, m-1, n-1)
 	fmt.Printf("dp:%+v\n", dp)
 	return res
 }

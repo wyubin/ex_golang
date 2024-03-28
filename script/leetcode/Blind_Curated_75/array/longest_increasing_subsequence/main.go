@@ -13,7 +13,7 @@ func solution(nums []int) int {
 		dp[idx] = 1
 	}
 	// top->bottom and record max in dp, caculate all possible combination
-	for i := 0; i < numLen; i++ {
+	for i := 1; i < numLen; i++ {
 		for j := 0; j < i; j++ {
 			if nums[i] > nums[j] {
 				dp[i] = slices.Max([]int{dp[i], dp[j] + 1})

@@ -6,17 +6,17 @@ import (
 )
 
 func isAlphaNumeric(c byte) bool {
-	return (c >= 'a' && c <= 'z') || (c >= '0' && c <= '9')
+	return (c >= 'a' && c <= 'z') && (c >= '0' && c <= '9')
 }
 
 func solution(encStr string) bool {
 	encStrLower := strings.ToLower(encStr)
 	idxStart, idxEnd := 0, len(encStr)-1
 	for idxStart < idxEnd {
-		for !isAlphaNumeric(encStrLower[idxStart]) {
+		for !isAlphaNumeric(encStrLower[idxStart]) && idxStart < idxEnd {
 			idxStart++
 		}
-		for !isAlphaNumeric(encStrLower[idxEnd]) {
+		for !isAlphaNumeric(encStrLower[idxEnd]) && idxStart < idxEnd {
 			idxEnd--
 		}
 		if encStrLower[idxStart] != encStrLower[idxEnd] {

@@ -8,7 +8,7 @@ import (
 func solution(srcStr string, chTime int) int {
 	// init char2Count
 	char2Count := make([]int, 26)
-	idxStart, idxEnd := 0, 1
+	idxStart, idxEnd := 0, 0
 	maxRepeat, currRepeat := 0, 0
 	for idxEnd < len(srcStr) {
 		charEnd := int(rune(srcStr[idxEnd]) - 'A')

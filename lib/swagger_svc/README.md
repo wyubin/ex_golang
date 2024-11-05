@@ -24,3 +24,4 @@ func GetUserByID(c *gin.Context) {
 
 # plan
 可以先試著建一個簡單的 svc 來試試，首先就要可以 service static 跟一些 api
+基本route 架構 - 可以參考[route.go](https://github.com/benhoyt/go-routing/blob/master/stdlib/route.go)

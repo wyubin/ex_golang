@@ -8,7 +8,7 @@ import (
 func NewRoute() http.Handler {
 	r := http.NewServeMux()
 
-	r.HandleFunc("/home", home)
+	r.HandleFunc("GET /home", home)
 
 	return r
 }

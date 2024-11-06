@@ -1,0 +1,48 @@
+basePath: /
+definitions:
+  entity.ReqUser:
+    properties:
+      id:
+        type: integer
+      name:
+        example: yubin
+        type: string
+    type: object
+info:
+  contact:
+    email: yubin.wang@ailabs.tw
+    name: YuBin Wang
+  description: This is a sample server for build swagger ui from swaggo yaml.
+  title: Swagger Example API
+  version: 0.0.1
+paths:
+  /info/:
+    get:
+      description: get route info
+      responses:
+        "200":
+          description: server info
+          schema:
+            type: string
+      summary: Print info
+      tags:
+      - info
+  /info/user:
+    post:
+      consumes:
+      - application/json
+      description: get string by ID
+      parameters:
+      - description: user info
+        in: body
+        name: request
+        required: true
+        schema:
+          $ref: '#/definitions/entity.ReqUser'
+      produces:
+      - application/json
+      responses: {}
+      summary: Say hello to a user
+      tags:
+      - info
+swagger: "2.0"

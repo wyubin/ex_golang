@@ -1,30 +1,32 @@
 package main
 
 import (
-	"example/swagger_svc/route"
+	"example/swagger_svc/servers"
 	"fmt"
 	"log"
-	"net/http"
-	"path/filepath"
-	"runtime"
+	"os"
 )
 
+const PORT = "4000"
+
+// @title           Swagger Example API
+// @version         0.0.1
+// @description     This is a sample server for build swagger ui from swaggo yaml.
+
+// @contact.name   YuBin Wang
+// @contact.email  yubin.wang@ailabs.tw
+
+// @BasePath  /
 func main() {
-	r := http.NewServeMux()
-	// static server
-	_, currentFilePath, _, _ := runtime.Caller(0)
-	wd, _ := filepath.Abs(filepath.Dir(currentFilePath))
-	fmt.Printf("current pwd: %s\n", wd)
-	fs := http.FileServer(http.Dir(filepath.Join(wd, "static")))
-	r.Handle("/static/", http.StripPrefix("/static/", fs))
+	errc := make(chan error)
 
-	// other route
-	exRoute := route.NewRoute()
-	r.Handle("/route/", http.StripPrefix("/route", exRoute))
+	s := servers.HttpEx{}
+	log.Printf("Run server on %s: %+v\n", PORT, s.Info())
+	go s.Start(fmt.Sprintf("0.0.0.0:%s", PORT), errc)
 
-	log.Println("Listening on :3000...")
-	err := http.ListenAndServe(":3000", r)
-	if err != nil {
-		log.Fatal(err)
+	// keep server live
+	for err := range errc {
+		log.Fatal(err.Error())
+		os.Exit(1)
 	}
 }

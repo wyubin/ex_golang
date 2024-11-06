@@ -7,6 +7,7 @@ ex_golang.wiki
 **/tmp
 *.env
 bin
+docs
 
 # Go workspace file
 go.work

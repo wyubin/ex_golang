@@ -12,10 +12,12 @@
 <script src="https://unpkg.com/swagger-ui-dist@5.11.0/swagger-ui-bundle.js" crossorigin></script>
 <script>
   window.onload = () => {
+    const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/static/') + 1);
     window.ui = SwaggerUIBundle({
       url: './swagger.yaml',
       dom_id: '#swagger-ui',
       host: window.location.host,
+      basePath: basePath,
     });
   };
 </script>

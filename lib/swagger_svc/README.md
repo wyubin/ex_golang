@@ -58,10 +58,12 @@ swag init \
 也可以直接在 html 裡面做動態修正
 ```javascript
 window.onload = () => {
-    window.ui = SwaggerUIBundle({
-      url: './swagger.yaml',
-      dom_id: '#swagger-ui',
-      host: window.location.host,
-    });
-  };
+  const basePath = window.location.pathname.substring(0, window.location.pathname.indexOf('/static/') + 1);
+  window.ui = SwaggerUIBundle({
+    url: './swagger.yaml',
+    dom_id: '#swagger-ui',
+    host: window.location.host,
+    basePath: basePath,
+  });
+};
 ```

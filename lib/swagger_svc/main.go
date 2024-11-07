@@ -15,8 +15,6 @@ const PORT = "4000"
 
 // @contact.name   YuBin Wang
 // @contact.email  yubin.wang@ailabs.tw
-
-// @BasePath  /
 func main() {
 	errc := make(chan error)
 
